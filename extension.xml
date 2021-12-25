@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root version="0.0" release="0" logo="logo.png">
+
+    <!-- Attributes -->
+    <properties>
+        <name>VoCore</name>
+        <description>
+            <text>VoCore</text>
+            <website>http://endless.horse/</website>
+            <author>Vodu#7888</author>
+        </description>
+        <ruleset>
+            <name>MoreCore</name>
+        </ruleset>
+
+    </properties>
+
+    <announcement text="VoCore"/>
+
+    <base>
+
+    </base>
+
+</root>
