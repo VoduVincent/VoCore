@@ -6,6 +6,7 @@
 		<version>0</version>
 		<author>Vodu#7888</author>
 		<description>aaron baaron</description>
+		<ruleset><name>MoreCore</name></ruleset>
 	</properties>
 	<base>
 
