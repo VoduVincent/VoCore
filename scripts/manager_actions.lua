@@ -11,6 +11,12 @@
 --	4. PERFORM ROLLS (IF ANY)
 --	5. RESOLVE ACTION
 
+-- NOTE: Rolls with sTargeting = "all" which use effect modifiers need to 
+-- 		handle effect application on resolution by checking target order field;
+--		since there will be no target specified in mod handler, 
+--		but will be specified in the result handler.
+--		i.e. "if rSource and rTarget and rTarget.nOrder then"
+
 -- ROLL
 --		.sType
 --		.sDesc
@@ -22,9 +28,8 @@ function onInit()
 	Interface.onHotkeyActivated = actionHotkey;
 end
 
-local bUseFGUDiceValues = false;
 function useFGUDiceValues(bState)
-	bUseFGUDiceValues = bState;
+	Debug.console("ActionsManager.useFGUDiceValues - DEPRECATED - 2021-10-15");
 end
 
 --
@@ -39,7 +44,7 @@ end
 
 local aTargetingHandlers = {};
 function registerTargetingHandler(sActionType, callback)
-	initAction(sActionType);
+	ActionsManager.initAction(sActionType);
 	aTargetingHandlers[sActionType] = callback;
 end
 function unregisterTargetingHandler(sActionType)
@@ -50,7 +55,7 @@ end
 
 local aModHandlers = {};
 function registerModHandler(sActionType, callback)
-	initAction(sActionType);
+	ActionsManager.initAction(sActionType);
 	aModHandlers[sActionType] = callback;
 end
 function unregisterModHandler(sActionType)
@@ -61,7 +66,7 @@ end
 
 local aPostRollHandlers = {};
 function registerPostRollHandler(sActionType, callback)
-	initAction(sActionType);
+	ActionsManager.initAction(sActionType);
 	aPostRollHandlers[sActionType] = callback;
 end
 function unregisterPostRollHandler(sActionType)
@@ -72,7 +77,7 @@ end
 
 local aResultHandlers = {};
 function registerResultHandler(sActionType, callback)
-	initAction(sActionType);
+	ActionsManager.initAction(sActionType);
 	aResultHandlers[sActionType] = callback;
 end
 function unregisterResultHandler(sActionType)
@@ -161,18 +166,18 @@ function performAction(draginfo, rActor, rRoll)
 		return;
 	end
 	
-	performMultiAction(draginfo, rActor, rRoll.sType, { rRoll });
+	ActionsManager.performMultiAction(draginfo, rActor, rRoll.sType, { rRoll });
 end
 
-function performMultiAction(draginfo, rActor, sType, rRolls, rRoll)
+function performMultiAction(draginfo, rActor, sType, rRolls)
 	if not rRolls or #rRolls < 1 then
 		return false;
 	end
 	
 	if draginfo then
-		encodeActionForDrag(draginfo, rActor, sType, rRolls);
+		ActionsManager.encodeActionForDrag(draginfo, rActor, sType, rRolls);
 	else
-		actionDirect(rActor, sType, rRolls);
+		ActionsManager.actionDirect(rActor, sType, rRolls);
 	end
 	return true;
 end
@@ -183,8 +188,8 @@ function actionHotkey(draginfo)
 		return;
 	end
 	
-	local rSource, rRolls = decodeActionFromDrag(draginfo, false);
-	actionDirect(rSource, sDragType, rRolls);
+	local rSource, rRolls = ActionsManager.decodeActionFromDrag(draginfo, false);
+	ActionsManager.actionDirect(rSource, sDragType, rRolls);
 	return true;
 end
 
@@ -194,33 +199,33 @@ function actionDrop(draginfo, rTarget)
 		return false;
 	end
 	
-	local rSource, rRolls = decodeActionFromDrag(draginfo, false);
+	local rSource, rRolls = ActionsManager.decodeActionFromDrag(draginfo, false);
 	local aTargeting = {};
 	if rTarget or ModifierStack.getTargeting() then
-		aTargeting = getTargeting(rSource, rTarget, sDragType, rRolls);
+		aTargeting = ActionsManager.getTargeting(rSource, rTarget, sDragType, rRolls);
 	else
 		aTargeting = { { } };
 	end
 
-	actionRoll(rSource, aTargeting, rRolls);
+	ActionsManager.actionRoll(rSource, aTargeting, rRolls);
 		
 	return true;
 end
 
 function actionDropHelper(draginfo, bResolveIfNoDice)
-	local rSource, aTargets = decodeActors(draginfo);
+	local rSource, aTargets = ActionsManager.decodeActors(draginfo);
 	
 	local bModStackUsed = false;
-	lockModifiers();
+	ActionsManager.lockModifiers();
 	
 	draginfo.setSlot(1);
 	for i = 1, draginfo.getSlotCount() do
-		if applyModifiersToDragSlot(draginfo, i, rSource, bResolveIfNoDice) then
+		if ActionsManager.applyModifiersToDragSlot(draginfo, i, rSource, bResolveIfNoDice) then
 			bModStackUsed = true;
 		end
 	end
 	
-	unlockModifiers(bModStackUsed);
+	ActionsManager.unlockModifiers(bModStackUsed);
 	
 	return rSource, aTargets;
 end
@@ -228,13 +233,13 @@ end
 function actionDirect(rActor, sDragType, rRolls, aTargeting)
 	if not aTargeting then
 		if ModifierStack.getTargeting() then
-			aTargeting = getTargeting(rActor, nil, sDragType, rRolls);
+			aTargeting = ActionsManager.getTargeting(rActor, nil, sDragType, rRolls);
 		else
 			aTargeting = { { } };
 		end
 	end
 	
-	actionRoll(rActor, aTargeting, rRolls);
+	ActionsManager.actionRoll(rActor, aTargeting, rRolls);
 end
 
 function getTargeting(rSource, rTarget, sDragType, rRolls)
@@ -275,17 +280,35 @@ function getTargeting(rSource, rTarget, sDragType, rRolls)
 end
 
 function encodeActors(draginfo, rSource, aTargets)
+	local sSourceNode = nil;
 	if rSource then
-		local sActorType, sActorNode = ActorManager.getTypeAndNodeName(rSource);
-		draginfo.addShortcut(sActorType, sActorNode);
+		sSourceNode = ActorManager.getCreatureNodeName(rSource);
+	end
+	if sSourceNode then
+		draginfo.addShortcut(ActorManager.getRecordType(rSource), sSourceNode);
+		ActionsManager.encodeActorActiveEffectNodes(draginfo, rSource, 1);
 	else
 		draginfo.addShortcut();
 	end
 	
 	if aTargets then
-		for _,v in ipairs(aTargets) do
-			local sActorType, sActorNode = ActorManager.getTypeAndNodeName(v);
-			draginfo.addShortcut(sActorType, sActorNode);
+		for kTarget,vTarget in ipairs(aTargets) do
+			local sTargetNode = ActorManager.getCreatureNodeName(vTarget);
+			if sTargetNode then
+				draginfo.addShortcut(ActorManager.getRecordType(vTarget), sTargetNode);
+				ActionsManager.encodeActorActiveEffectNodes(draginfo, vTarget, kTarget + 1);
+			end
+		end
+	end
+end
+function encodeActorActiveEffectNodes(draginfo, rActor, nActorIndex)
+	local tActive = ActorManager.getActiveEffectNodes(rActor);
+	local sMetaKey = "__actor" .. nActorIndex .. "_active";
+	for kActive,vActive in ipairs(tActive) do
+		if type(vActive) == "databasenode" then
+			draginfo.setMetaData(sMetaKey .. kActive, vActive.getPath());
+		else
+			draginfo.setMetaData(sMetaKey .. kActive, tostring(vActive) or "");
 		end
 	end
 end
@@ -295,17 +318,31 @@ function decodeActors(draginfo)
 	local aTargets = {};
 	
 	for k,v in ipairs(draginfo.getShortcutList()) do
+		local rActor = ActorManager.resolveActor(v.recordname);
+		ActionsManager.decodeActorActiveEffectNodes(draginfo, rActor, k);
 		if k == 1 then
-			rSource = ActorManager.getActor(v.class, v.recordname);
+			rSource = rActor;
 		else
-			local rTarget = ActorManager.getActor(v.class, v.recordname);
-			if rTarget then
-				table.insert(aTargets, rTarget);
+			if rActor then
+				table.insert(aTargets, rActor);
 			end
 		end
 	end
 	
 	return rSource, aTargets;
+end
+function decodeActorActiveEffectNodes(draginfo, rActor, nActorIndex)
+	if not rActor then
+		return;
+	end
+
+	local sMetaKey = "__actor" .. nActorIndex .. "_active";
+	local tMetaData = draginfo.getMetaDataList();
+	local kActive = 1;
+	while tMetaData[sMetaKey .. kActive] do
+		ActorManager.addActiveEffectNode(rActor, tMetaData[sMetaKey .. kActive]);
+		kActive = kActive + 1;
+	end
 end
 
 function encodeRollForDrag(draginfo, i, vRoll)
@@ -330,7 +367,7 @@ function encodeRollForDrag(draginfo, i, vRoll)
 end
 
 function encodeActionForDrag(draginfo, rSource, sType, rRolls)
-	encodeActors(draginfo, rSource);
+	ActionsManager.encodeActors(draginfo, rSource);
 	
 	draginfo.setType(sType);
 	
@@ -344,7 +381,7 @@ function encodeActionForDrag(draginfo, rSource, sType, rRolls)
 	end
 	
 	for kRoll, vRoll in ipairs(rRolls) do
-		encodeRollForDrag(draginfo, kRoll, vRoll);
+		ActionsManager.encodeRollForDrag(draginfo, kRoll, vRoll);
 	end
 	
 	if #rRolls > 0 then
@@ -368,36 +405,18 @@ function decodeRollFromDrag(draginfo, i, bFinal)
 	end
 	vRoll.nMod = draginfo.getNumberData();
 	
-	vRoll.aDice = {};
-	if UtilityManager.isClientFGU() then
-		vRoll.aDice = draginfo.getDieList() or {};
-	else
-		if bFinal then
-			vRoll.aDice = processPercentiles(draginfo) or {};
-		else
-			local aDragDice = draginfo.getDieList();
-			if aDragDice then
-				for k, v in ipairs(aDragDice) do
-					if type(v) == "string" then
-						table.insert(vRoll.aDice, v);
-					elseif type(v) == "table" then
-						table.insert(vRoll.aDice, v["type"]);
-					end
-				end
-			end
-		end
-	end
+	vRoll.aDice = draginfo.getDieList() or {};
 	
 	vRoll.bSecret = draginfo.getSecret();
 	return vRoll;
 end
 
 function decodeActionFromDrag(draginfo, bFinal)
-	local rSource, aTargets = decodeActors(draginfo);
+	local rSource, aTargets = ActionsManager.decodeActors(draginfo);
 
 	local rRolls = {};
 	for i = 1, draginfo.getSlotCount() do
-		table.insert(rRolls, decodeRollFromDrag(draginfo, i, bFinal));
+		table.insert(rRolls, ActionsManager.decodeRollFromDrag(draginfo, i, bFinal));
 	end
 	
 	return rSource, rRolls, aTargets;
@@ -409,17 +428,17 @@ end
 
 function actionRoll(rSource, vTarget, rRolls)
 	local bModStackUsed = false;
-	lockModifiers();
+	ActionsManager.lockModifiers();
 	
 	for _,vTargetGroup in ipairs(vTarget) do
 		for _,vRoll in ipairs(rRolls) do
-			if applyModifiersAndRoll(rSource, vTargetGroup, true, vRoll) then
+			if ActionsManager.applyModifiersAndRoll(rSource, vTargetGroup, true, vRoll) then
 				bModStackUsed = true;
 			end
 		end
 	end
 	
-	unlockModifiers(bModStackUsed);
+	ActionsManager.unlockModifiers(bModStackUsed);
 end
 
 function applyModifiersAndRoll(rSource, vTarget, bMultiTarget, rRoll)
@@ -428,29 +447,29 @@ function applyModifiersAndRoll(rSource, vTarget, bMultiTarget, rRoll)
 	local bModStackUsed = false;
 	if bMultiTarget then
 		if vTarget and #vTarget == 1 then
-			bModStackUsed = applyModifiers(rSource, vTarget[1], rNewRoll);
+			bModStackUsed = ActionsManager.applyModifiers(rSource, vTarget[1], rNewRoll);
 		else
 			-- Only apply non-target specific modifiers before roll
-			bModStackUsed = applyModifiers(rSource, nil, rNewRoll);
+			bModStackUsed = ActionsManager.applyModifiers(rSource, nil, rNewRoll);
 		end
 	else
-		bModStackUsed = applyModifiers(rSource, vTarget, rNewRoll);
+		bModStackUsed = ActionsManager.applyModifiers(rSource, vTarget, rNewRoll);
 	end
 	
-	roll(rSource, vTarget, rNewRoll, bMultiTarget);
+	ActionsManager.roll(rSource, vTarget, rNewRoll, bMultiTarget);
 	
 	return bModStackUsed;
 end
 
 function applyModifiersToDragSlot(draginfo, i, rSource, bResolveIfNoDice)
-	local rRoll = decodeRollFromDrag(draginfo, i);
+	local rRoll = ActionsManager.decodeRollFromDrag(draginfo, i);
 
-	local bHasDice = doesRollHaveDice(rRoll);
+	local bHasDice = ActionsManager.doesRollHaveDice(rRoll);
 	local nDice = #(rRoll.aDice);
-	local bModStackUsed = applyModifiers(rSource, nil, rRoll);
+	local bModStackUsed = ActionsManager.applyModifiers(rSource, nil, rRoll);
 	
 	if bResolveIfNoDice and not bHasDice then
-		resolveAction(rSource, nil, rRoll);
+		ActionsManager.resolveAction(rSource, nil, rRoll);
 	else
 		for k,v in pairs(rRoll) do
 			if k == "sType" then
@@ -487,7 +506,7 @@ function unlockModifiers(bReset)
 end
 
 function applyModifiers(rSource, rTarget, rRoll, bSkipModStack)	
-	local bAddModStack = doesRollHaveDice(rRoll);
+	local bAddModStack = ActionsManager.doesRollHaveDice(rRoll);
 	if bSkipModStack then
 		bAddModStack = false;
 	elseif GameSystem.actions[rRoll.sType] then
@@ -544,7 +563,7 @@ function buildThrow(rSource, vTargets, rRoll, bMultiTarget)
 				table.insert(rThrow.shortcuts, { recordname = sTargetActorPath });
 			end
 		else
-			local sTargetActorPath = ActorManager.getCreatureNodeName(v);
+			local sTargetActorPath = ActorManager.getCreatureNodeName(vTargets);
 			table.insert(rThrow.shortcuts, { recordname = sTargetActorPath });
 		end
 	end
@@ -558,72 +577,32 @@ function buildThrow(rSource, vTargets, rRoll, bMultiTarget)
 	return rThrow;
 end
 
--- Start KEL
 function roll(rSource, vTargets, rRoll, bMultiTarget)
-if rRoll.sType == 'dice' then
-    if doesRollHaveDice(rRoll) then
-        if not rRoll.bTower and OptionsManager.isOption("MANUALROLL", "on") then
-            local wManualRoll = Interface.openWindow("manualrolls", "");
-            wManualRoll.addRoll(rRoll, rSource, vTargets);
-        else
-            local rThrow = buildThrow(rSource, vTargets, rRoll, bMultiTarget);
-            Comm.throwDice(rThrow);
-        end
-    else
-        if bMultiTarget then
-            handleResolution(rRoll, rSource, vTargets);
-        else
-            handleResolution(rRoll, rSource, { vTargets });
-        end
-    end
-
-else
-    if EffectManagerMoreCore.hasEffectCondition(rSource, "keladvantage") or ( rRoll.adv == "true" ) then
-        rRoll.adv = "true";
-        local i = 1;
-        local slot = i + 1;
-        while rRoll.aDice[i] do
-            table.insert(rRoll.aDice, slot, rRoll.aDice[i]);
-            i = i + 2;
-            slot = i+1;
-        end
-    elseif EffectManagerMoreCore.hasEffectCondition(rSource, "keldisadvantage") or ( rRoll.disadv == "true" ) then
-        rRoll.disadv = "true";
-        local i = 1;
-        local slot = i + 1;
-        while rRoll.aDice[i] do
-            table.insert(rRoll.aDice, slot, rRoll.aDice[i]);
-            i = i + 2;
-            slot = i+1;
-        end
-    end
-    if #(rRoll.aDice) > 0 then
-        if not rRoll.bTower and OptionsManager.isOption("MANUALROLL", "on") then
-            local wManualRoll = Interface.openWindow("manualrolls", "");
-            wManualRoll.addRoll(rRoll, rSource, vTargets);
-        else
-            local rThrow = buildThrow(rSource, vTargets, rRoll, bMultiTarget);
-            Comm.throwDice(rThrow);
-        end
-    else
-        if bMultiTarget then
-            handleResolution(rRoll, rSource, vTargets);
-        else
-            handleResolution(rRoll, rSource, { vTargets });
-        end
-    end
+	if ActionsManager.doesRollHaveDice(rRoll) then
+		if not rRoll.bTower and OptionsManager.isOption("MANUALROLL", "on") then
+			local wManualRoll = Interface.openWindow("manualrolls", "");
+			wManualRoll.addRoll(rRoll, rSource, vTargets);
+		else
+			local rThrow = ActionsManager.buildThrow(rSource, vTargets, rRoll, bMultiTarget);
+			Comm.throwDice(rThrow);
+		end
+	else
+		if bMultiTarget then
+			ActionsManager.handleResolution(rRoll, rSource, vTargets);
+		else
+			ActionsManager.handleResolution(rRoll, rSource, { vTargets });
+		end
+	end
 end 
-end
--- End KEL
 
 function onDiceLanded(draginfo)
 	local sDragType = draginfo.getType();
 	if GameSystem.actions[sDragType] then
-		local rSource, rRolls, aTargets = decodeActionFromDrag(draginfo, true);
+		local rSource, rRolls, aTargets = ActionsManager.decodeActionFromDrag(draginfo, true);
 		
 		for _,vRoll in ipairs(rRolls) do
-			if doesRollHaveDice(vRoll) then
-				handleResolution(vRoll, rSource, aTargets);
+			if ActionsManager.doesRollHaveDice(vRoll) then
+				ActionsManager.handleResolution(vRoll, rSource, aTargets);
 			end
 		end
 		
@@ -648,13 +627,14 @@ function handleResolution(vRoll, rSource, aTargets)
 	end
 	
 	if not aTargets or (#aTargets == 0) then
-		resolveAction(rSource, nil, vRoll);
+		ActionsManager.resolveAction(rSource, nil, vRoll);
 	elseif #aTargets == 1 then
-		resolveAction(rSource, aTargets[1], vRoll);
+		ActionsManager.resolveAction(rSource, aTargets[1], vRoll);
 	else
 		for kTarget,rTarget in ipairs(aTargets) do
+			local rRollTarget = UtilityManager.copyDeep(vRoll);
 			rTarget.nOrder = kTarget;
-			resolveAction(rSource, rTarget, vRoll);
+			ActionsManager.resolveAction(rSource, rTarget, rRollTarget);
 		end
 	end
 end
@@ -671,50 +651,15 @@ end
 --  (I.E. DISPLAY CHAT MESSAGE, COMPARISONS, ETC.)
 --
 
-
--- Start KEL
 function resolveAction(rSource, rTarget, rRoll)
-	if rRoll.adv == "true" then
-		local i = 1;
-		local slot = i+1;
-		while rRoll.aDice[i] do
-			if rRoll.aDice[i].result <= rRoll.aDice[slot].result then
-				table.remove(rRoll.aDice, i);
-			else
-				table.remove(rRoll.aDice, slot);
-			end
-			i = i + 1;
-			slot = i+1;
-		end
-		rRoll.sDesc = rRoll.sDesc .. " [ADV]";
-		local nodeCT = ActorManager.getCTNode(rSource);
-		EffectManager.removeEffect(nodeCT, "keladvantage");
-	elseif rRoll.disadv == "true" then
-		local i = 1;
-		local slot = i+1;
-		while rRoll.aDice[i] do
-			if rRoll.aDice[i].result >= rRoll.aDice[slot].result then
-				table.remove(rRoll.aDice, i);
-			else
-				table.remove(rRoll.aDice, slot);
-			end
-			i = i + 1;
-			slot = i+1;
-		end
-		rRoll.sDesc = rRoll.sDesc .. " [DISADV]";
-		local nodeCT = ActorManager.getCTNode(rSource);
-		EffectManager.removeEffect(nodeCT, "keldisadvantage");
-	end
 	local fResult = aResultHandlers[rRoll.sType];
 	if fResult then
 		fResult(rSource, rTarget, rRoll);
 	else
-		local rMessage = createActionMessage(rSource, rRoll);
+		local rMessage = ActionsManager.createActionMessage(rSource, rRoll);
 		Comm.deliverChatMessage(rMessage);
 	end
 end
--- End END
-
 
 function createActionMessage(rSource, rRoll)
 	local sDesc = rRoll.sDesc;
@@ -732,15 +677,8 @@ function createActionMessage(rSource, rRoll)
 		if rRoll.bTower then
 			rMessage.icon = "dicetower_icon";
 		end
-	elseif User.isHost() and OptionsManager.isOption("REVL", "off") then
+	elseif Session.IsHost and OptionsManager.isOption("REVL", "off") then
 		rMessage.secret = true;
-	end
-	
-	-- Show total if option enabled
-	if not UtilityManager.isClientFGU() then
-		if OptionsManager.isOption("TOTL", "on") and doesRollHaveDice(rRoll) then
-			rMessage.dicedisplay = 1;
-		end
 	end
 	
 	return rMessage;
@@ -750,10 +688,12 @@ function total(rRoll)
 	local nTotal = 0;
 
 	for _,v in ipairs(rRoll.aDice) do
-		if bUseFGUDiceValues and v.value then
-			nTotal = nTotal + v.value;
-		else
-			nTotal = nTotal + v.result;
+		if not v.dropped then
+			if v.value then
+				nTotal = nTotal + v.value;
+			else
+				nTotal = nTotal + v.result;
+			end
 		end
 	end
 	nTotal = nTotal + rRoll.nMod;
@@ -766,7 +706,7 @@ function outputResult(bTower, rSource, rTarget, rMessageGM, rMessagePlayer)
 		rMessageGM.secret = true;
 		Comm.deliverChatMessage(rMessageGM, "");
 	else
-		messageResult(false, rSource, rTarget, rMessageGM, rMessagePlayer);
+		ActionsManager.messageResult(false, rSource, rTarget, rMessageGM, rMessagePlayer);
 	end
 end
 
@@ -798,7 +738,7 @@ function messageResult(bSecret, rSource, rTarget, rMessageGM, rMessagePlayer)
 		rMessageGM.secret = true;
 		Comm.deliverChatMessage(rMessageGM, "");
 
-		if User.isHost() then
+		if Session.IsHost then
 			local aUsers = User.getActiveUsers();
 			if #aUsers > 0 then
 				Comm.deliverChatMessage(rMessagePlayer, aUsers);

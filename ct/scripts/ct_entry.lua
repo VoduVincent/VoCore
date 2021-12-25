@@ -3,80 +3,30 @@
 -- attribution and copyright information.
 --
 
--- from CoreRPG 
--- Added setActiveVisible for Attack String
 function onInit()
-	-- Set the displays to what should be shown
-	setTargetingVisible();
-	setSpacingVisible();
-	setEffectsVisible();
-	setActiveVisible();
-	setRollsVisible();
-
-	-- Acquire token reference, if any
-	linkToken();
-	
-	-- Set up the PC links
-	onLinkChanged();
-	
-	-- Update the displays
-	onFactionChanged();
-	
 	-- Register the deletion menu item for the host
 	registerMenuItem(Interface.getString("list_menu_deleteitem"), "delete", 6);
 	registerMenuItem(Interface.getString("list_menu_deleteconfirm"), "delete", 6, 7);
 
+	-- Set the displays to what should be shown
+	setTargetingVisible();
+	setSpacingVisible();
+	setEffectsVisible();
 
-end
----
---- Additional Functions for More Core
--- Added toggleActive for Attack String
-function toggleActive()
-	if not enableglobaltoggle then
-		return;
-	end
+	-- Acquire token reference, if any
+	linkToken();
 	
-	local activeon = window.button_global_active.getValue();
-	for _,v in pairs(getWindows()) do
-			v.activateactive.setValue(activeon);
-	end
-end
--- Added toggleRolls for Roll String
-function toggleRolls()
-	if not enableglobaltoggle then
-		return;
-	end
-	
-	local rollson = window.button_global_rolls.getValue();
-	for _,v in pairs(getWindows()) do
-			v.activateactive.setValue(rollson);
-	end
+	-- Update the displays
+	onLinkChanged();
+	onFactionChanged();
 end
 
-
-
--- from CoreRPG 
-function onVisibilityToggle()
-	local anyVisible = 0;
-	for _,v in pairs(getWindows()) do
-		if (v.friendfoe.getStringValue() ~= "friend") and (v.tokenvis.getValue() == 1) then
-			anyVisible = 1;
-		end
-	end
-	
-	enablevisibilitytoggle = false;
-	window.button_global_visibility.setValue(anyVisible);
-	enablevisibilitytoggle = true;
-end
-
---- End new Functions
-
--- from CoreRPG 
 function updateDisplay()
 	local sFaction = friendfoe.getStringValue();
 
 	if DB.getValue(getDatabaseNode(), "active", 0) == 1 then
 		name.setFont("sheetlabel");
+		nonid_name.setFont("sheetlabel");
 		
 		active_spacer_top.setVisible(true);
 		active_spacer_bottom.setVisible(true);
@@ -92,6 +42,7 @@ function updateDisplay()
 		end
 	else
 		name.setFont("sheettext");
+		nonid_name.setFont("sheettext");
 		
 		active_spacer_top.setVisible(false);
 		active_spacer_bottom.setVisible(false);
@@ -108,7 +59,6 @@ function updateDisplay()
 	end
 end
 
--- from CoreRPG 
 function linkToken()
 	local imageinstance = token.populateFromImageNode(tokenrefnode.getValue(), tokenrefid.getValue());
 	if imageinstance then
@@ -116,14 +66,12 @@ function linkToken()
 	end
 end
 
--- from CoreRPG 
 function onMenuSelection(selection, subselection)
 	if selection == 6 and subselection == 7 then
 		delete();
 	end
 end
 
--- from CoreRPG 
 function delete()
 	local node = getDatabaseNode();
 	if not node then
@@ -132,9 +80,9 @@ function delete()
 	end
 	
 	-- Remember node name
-	local sNode = node.getNodeName();
+	local sNode = node.getPath();
 	
-	-- Clear any effects and wounds first, so that saves aren't triggered when initiative advanced
+	-- Clear any effects and wounds first, so that rolls aren't triggered when initiative advanced
 	effects.reset(false);
 	
 	-- Move to the next actor, if this CT entry is active
@@ -149,10 +97,8 @@ function delete()
 	-- Update list information (global subsection toggles)
 	cList.onVisibilityToggle();
 	cList.onEntrySectionToggle();
-	
-	end
+end
 
--- from CoreRPG 
 function onLinkChanged()
 	-- If a PC, then set up the links to the char sheet
 	local sClass, sRecord = link.getValue();
@@ -160,9 +106,24 @@ function onLinkChanged()
 		linkPCFields();
 		name.setLine(false);
 	end
+	onIDChanged();
 end
 
--- from CoreRPG 
+function onIDChanged()
+	local nodeRecord = getDatabaseNode();
+	local sClass = DB.getValue(nodeRecord, "link", "", "");
+	if sClass == "npc" then
+		local bID = LibraryData.getIDState("npc", nodeRecord, true);
+		name.setVisible(bID);
+		nonid_name.setVisible(not bID);
+		isidentified.setVisible(true);
+	else
+		name.setVisible(true);
+		nonid_name.setVisible(false);
+		isidentified.setVisible(false);
+	end
+end
+
 function onFactionChanged()
 	-- Update the entry frame
 	updateDisplay();
@@ -175,115 +136,23 @@ function onFactionChanged()
 	end
 end
 
--- from CoreRPG 
 function onVisibilityChanged()
 	TokenManager.updateVisibility(getDatabaseNode());
 	windowlist.onVisibilityToggle();
 end
 
--- from CoreRPG 
--- added links for C1/Health, C2/Defence, Order/Order, Attack/Atk 
 function linkPCFields()
 	local nodeChar = link.getTargetDatabaseNode();
---	Debug.console("linkPCFields:");
---	Debug.console(nodeChar);
 	if nodeChar then
 		name.setLink(nodeChar.createChild("name", "string"), true);
-		health.setLink(nodeChar.createChild("health", "number"), false);
-		defence.setLink(nodeChar.createChild("defence", "number"), false);
-		fieldthree.setLink(nodeChar.createChild("wounds", "number"), false);
-		initresult.setLink(nodeChar.createChild("initresult", "number"));
-		atk.setLink(nodeChar.createChild("attacks", "string"), true);
-		four.setLink(nodeChar.createChild("four", "number"), false);
-		five.setLink(nodeChar.createChild("five", "number"), false);
+		senses.setLink(nodeChar.createChild("senses", "string"), true);
 	end
 end
-
 
 --
 -- SECTION VISIBILITY FUNCTIONS
 --
--- Added setActiveVisible for Attack String
-function setActiveVisible()
-	local v = false;
-	if activateactive.getValue() == 1 then
-		v = true;
-	end
-	local sClass, sRecord = link.getValue();
-	if sClass ~= "charsheet" and active.getValue() == 1 then
-		v = true;
-	end
-	
-	local bMonster;
-	
-	if sClass == "charsheet" then
-		bMonster = false;
-	else
-		bMonster = (DB.getValue(getDatabaseNode(), "monster", "") ~= "false");
-	end
-	
-	activeicon.setVisible(v);
 
---	initresult.setVisible(v);
---	init_label.setVisible(v);
---	move.setVisible(v and not bMonster);
---	monstermove.setVisible(v and bMonster);
---	move_label.setVisible(v);
---	bth.setVisible(v and not bMonster);
---	monsterbth.setVisible(v and bMonster);
---	bth_label.setVisible(v);
-	atk.setVisible(v);
---	atk.setVisible(v and not bMonster);
---	monsteratk.setVisible(v and bMonster);
-	atk_label.setVisible(v);
---	sa.setVisible(v);
---	sa_label.setVisible(v);
-	
-	frame_active.setVisible(v);
-end
-
--- Added setRollsVisible for Rolls
-function setRollsVisible()
-	local v = false;
-	if activaterolls.getValue() == 1 then
-		v = true;
-	end
-	local sClass, sRecord = link.getValue();
-	if sClass ~= "charsheet" and active.getValue() == 1 then
-		v = true;
-	end
-	
-	local bMonster;
-	
-	if sClass == "charsheet" then
-		bMonster = false;
-	else
-		bMonster = (DB.getValue(getDatabaseNode(), "monster", "") ~= "false");
-	end
-	
---	activeicon.setVisible(v);
-
---	initresult.setVisible(v);
---	init_label.setVisible(v);
---	move.setVisible(v and not bMonster);
---	monstermove.setVisible(v and bMonster);
---	move_label.setVisible(v);
---	bth.setVisible(v and not bMonster);
---	monsterbth.setVisible(v and bMonster);
---	bth_label.setVisible(v);
---	rolls.setVisible(v and not bMonster);
---	rolls.setVisible(false);
-	rollsicon.setVisible(v);
-	rollslabel.setVisible(v);
-	monsterrolls.setVisible(v);
-	rolls_anchor.setVisible(v);
---	rolls_label.setVisible(v);
---	sa.setVisible(v);
---	sa_label.setVisible(v);
-	frame_rolls.setVisible(v);
-end
-
--- from CoreRPG
 function setTargetingVisible()
 	local v = false;
 	if activatetargeting.getValue() == 1 then
@@ -299,7 +168,6 @@ function setTargetingVisible()
 	target_summary.onTargetsChanged();
 end
 
--- from CoreRPG
 function setSpacingVisible()
 	local v = false;
 	if activatespacing.getValue() == 1 then
@@ -316,7 +184,6 @@ function setSpacingVisible()
 	frame_spacing.setVisible(v);
 end
 
--- From CoreRPG
 function setEffectsVisible()
 	local v = false;
 	if activateeffects.getValue() == 1 then

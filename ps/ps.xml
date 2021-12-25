@@ -9,10 +9,10 @@
 	<windowclass name="partysheet_host">
 		<frame>partysheet</frame>
 		<placement>
-			<size width="800" height="500" />
+			<size width="770" height="500" />
 		</placement>
 		<sizelimits>
-			<minimum width="800" height="500" />
+			<minimum width="770" height="500" />
 			<dynamic />
 		</sizelimits>
 		<softclose />
@@ -23,28 +23,21 @@
 			</windowtitlebar>
 			<anchor_title_partysheet name="contentanchor" />
 			
-			<sub_ps name="order">
-				<class>ps_order</class>
-			</sub_ps>
 			<sub_ps name="inventory">
 				<class>ps_inventory</class>
 			</sub_ps>
-			<sub_ps name="xp">
-				<class>ps_xp</class>
+			<sub_ps name="order">
+				<class>ps_order</class>
 			</sub_ps>
 			
 			<tabs_partysheet name="tabs">
-				<tab>
-					<icon>tab_order</icon>
-					<subwindow>order</subwindow>
-				</tab>
 				<tab>
 					<icon>tab_inventory</icon>
 					<subwindow>inventory</subwindow>
 				</tab>
 				<tab>
-					<icon>tab_xp</icon>
-					<subwindow>xp</subwindow>
+					<icon>tab_order</icon>
+					<subwindow>order</subwindow>
 				</tab>
 			</tabs_partysheet>
 			
@@ -57,43 +50,36 @@
 	<windowclass name="partysheet_client">
 		<frame>partysheet</frame>
 		<placement>
-			<size width="800" height="500" />
+			<size width="770" height="500" />
 		</placement>
 		<sizelimits>
-			<minimum width="800" height="500" />
+			<minimum width="770" height="500" />
 			<dynamic />
 		</sizelimits>
 		<softclose />
 		<nodelete />
-<!--		<script file="ps/scripts/ps_client.lua" /> -->
+		<playercontrol />
 		<sheetdata>
 			<windowtitlebar name="title">
 				<resource>ps_window_title</resource>
 			</windowtitlebar>
 			<anchor_title_partysheet name="contentanchor" />
 			
-			<sub_ps name="order">
-				<class>ps_order</class>
-			</sub_ps>
 			<sub_ps name="inventory">
 				<class>ps_inventory</class>
 			</sub_ps>
-			<sub_ps name="xp">
-				<class>ps_xp</class>
+			<sub_ps name="order">
+				<class>ps_order</class>
 			</sub_ps>
 			
-			<tabs_partysheet>
-				<tab>
-					<icon>tab_order</icon>
-					<subwindow>order</subwindow>
-				</tab>
+			<tabs_partysheet name="tabs">
 				<tab>
 					<icon>tab_inventory</icon>
 					<subwindow>inventory</subwindow>
 				</tab>
 				<tab>
-					<icon>tab_xp</icon>
-					<subwindow>xp</subwindow>
+					<icon>tab_order</icon>
+					<subwindow>order</subwindow>
 				</tab>
 			</tabs_partysheet>
 			

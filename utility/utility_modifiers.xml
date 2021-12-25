@@ -9,25 +9,46 @@
 	<windowclass name="modifiers">
 		<frame>utilitybox3</frame>
 		<placement>
-			<size width="350" height="350" />
+			<size width="550" height="430" />
 		</placement>
 		<sizelimits>
 			<dynamic />
-			<minimum width="350" height="350" />
+			<minimum width="550" height="350" />
 		</sizelimits>
 		<playercontrol />
 		<nodelete />
+		<tooltip textres="library_recordtype_label_modifier" />
+		<script file="utility/scripts/modifierwindow.lua" />
 		<sheetdata>
 			<windowtitlebar name="title">
-				<resource>modifier_window_title</resource>
+				<resource>library_recordtype_label_modifier</resource>
 			</windowtitlebar>
 			<anchor_title_utilitybox3 name="contentanchor" />
 			
-			<list_modifiers name="list" />
-			<scrollbar_list />
+			<anchor_modifier_list_bottom />
+
+			<sub_modifier_preset name="preset" />
+			<scrollbar name="scroll_preset">
+				<anchored to="preset" />
+				<target>preset</target>
+			</scrollbar>
+			<label_modifier_preset name="label_preset" />
+
+			<anchor_modifier_paging />
+			<list_page_info />
+			<list_page_start />
+			<list_page_prev />
+			<list_page_next />
+			<list_page_end />
 			
-			<anchor_campaign2 />
-			<button_iedit_campaign />
+			<list_modifier_custom name="list" />
+			<scrollbar_list name="scroll_list" />
+			<label_modifier_custom name="label_custom" />
+			
+			<anchor_bottom_utilitybox3 name="bottomanchor" />
+
+			<anchor_utility_controls />
+			<button_iedit_utility />
 			<button_iadd_utility />
 			<filter_utility />
 			
@@ -37,107 +58,47 @@
 		</sheetdata>
 	</windowclass>
 
-	<windowclass name="modifiersmall">
-		<margins control="0,0,0,2" />
-		<script>
-			function actionDrag(draginfo)
-				if not label.isEmpty() then
-					draginfo.setType("number");
-					draginfo.setDescription(label.getValue());
-					draginfo.setStringData(label.getValue());
-					draginfo.setNumberData(bonus.getValue());
-				end
-				return true;
-			end
-			
-			function action()
-				ModifierStack.addSlot(label.getValue(), bonus.getValue());
-				return true;
-			end
+	<windowclass name="modifier_presets">
+		<script file="utility/scripts/modifierlist_presets.lua" />
+		<sheetdata>
+			<anchor_column name="columnanchor" />
+		</sheetdata>
+	</windowclass>
 
-			function onDrop(x, y, draginfo)
-				return windowlist.onDrop(x, y, draginfo);
+	<windowclass name="modifier_preset_item">
+		<margins control="0,0,0,7" />
+		<script>
+			function setData(sKey)
+				button.setData(sKey);
 			end
 		</script>
 		<sheetdata>
-			<genericcontrol name="rightanchor">
-				<anchored height="0" width="0">
-					<top />
-					<right />
-				</anchored>
+			<button_modifier_preset name="button" />
+		</sheetdata>
+	</windowclass>
+
+	<windowclass name="modifier_preset_separator">
+		<margins control="0,0,0,7" />
+		<sheetdata>
+			<genericcontrol>
+				<anchored position="insidetop" offset="-7,7" height="20" />
 			</genericcontrol>
-			<button_idelete name="idelete">
-				<anchored>
-					<top offset="2" />
-					<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
-				</anchored>
-			</button_idelete>
-			<buttonfield name="isgmonly">
-				<anchored width="20" height="20">
-					<top offset="3" />
-					<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
-				</anchored>
-				<gmvisibleonly />
-				<gmeditonly />
-				<state icon="visibilityon" tooltipres="visibilityon" />
-				<state icon="visibilityoff" tooltipres="visibilityoff" />
-			</buttonfield>
-			<basicnumber name="bonus">
-				<anchored width="30" height="20">
-					<top offset="2" />
-					<right parent="rightanchor" anchor="left" relation="relative" offset="-10" />
-				</anchored>
-				<gmeditonly />
-				<displaysign />
-				<tabtarget prev="label" />
-				<script>
-					function onDragStart(button, x, y, draginfo)
-						return window.actionDrag(draginfo);
-					end
+		</sheetdata>
+	</windowclass>
 
-					function onDoubleClick(x, y)
-						return window.action();
-					end
+	<windowclass name="modifiersmall">
+		<margins control="0,0,0,2" />
+		<script file="utility/scripts/modifier.lua" />
+		<sheetdata>
+			<anchor_modifier_left name="leftanchor" />
+			<button_modifier_activate name="activate" />
 
-					function onGainFocus()
-						window.setFrame("rowshade");
-					end
-
-					function onLoseFocus()
-						window.setFrame(nil);
-					end
-				</script>
-			</basicnumber>
+			<anchor_modifier_right name="rightanchor" />
+			<button_modifier_idelete name="idelete" />
+			<button_modifier_isgmonly name="isgmonly" />
+			<number_modifier_bonus name="bonus" />
 			
-			<buttoncontrol>
-				<anchored position="insidetopleft" offset="2,z2" width="20" height="20" />
-				<icon normal="button_action_modifier" pressed="button_action_modifier_down" />
-				<script>
-					function onDragStart(button, x, y, draginfo)
-						return window.actionDrag(draginfo);
-					end
-
-					function onButtonPress(x, y)
-						return window.action();
-					end
-				</script>
-			</buttoncontrol>
-			<string_textlistitem name="label">
-				<anchored position="insidetopleft" offset="27,3" height="20">
-					<right parent="rightanchor" anchor="left" relation="relative" offset="-10" />
-				</anchored>
-				<gmeditonly />
-				<tabtarget next="bonus" />
-				<script>
-					function onDragStart(button, x, y, draginfo)
-						return window.actionDrag(draginfo);
-					end
-
-					function onDoubleClick(x, y)
-						return window.action();
-					end
-				</script>
-			</string_textlistitem>
+			<string_modifier name="label" />
 		</sheetdata>
 	</windowclass>
 </root>

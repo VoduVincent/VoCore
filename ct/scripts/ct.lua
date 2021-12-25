@@ -6,40 +6,30 @@
 local enableglobaltoggle = true;
 local enablevisibilitytoggle = true;
 
--- from CoreRPG
 function onInit()
-	Interface.onHotkeyActivated = onHotkey;
-	
 	registerMenuItem(Interface.getString("list_menu_createitem"), "insert", 5);
 
+	Interface.onHotkeyActivated = onHotkey;
+	
 	onVisibilityToggle();
 	onEntrySectionToggle();
-	
-	OptionsManager.registerCallback("WNDC", onOptionWNDCChanged);
-	
+
 	local node = getDatabaseNode();
 	DB.addHandler(DB.getPath(node, "*.name"), "onUpdate", onNameOrTokenUpdated);
+	DB.addHandler(DB.getPath(node, "*.nonid_name"), "onUpdate", onNameOrTokenUpdated);
+	DB.addHandler(DB.getPath(node, "*.isidentified"), "onUpdate", onNameOrTokenUpdated);
 	DB.addHandler(DB.getPath(node, "*.token"), "onUpdate", onNameOrTokenUpdated);
 end
 
--- from CoreRPG
 function onClose()
-	OptionsManager.unregisterCallback("WNDC", onOptionWNDCChanged);
-
 	local node = getDatabaseNode();
 	DB.removeHandler(DB.getPath(node, "*.name"), "onUpdate", onNameOrTokenUpdated);
+	DB.removeHandler(DB.getPath(node, "*.nonid_name"), "onUpdate", onNameOrTokenUpdated);
+	DB.removeHandler(DB.getPath(node, "*.isidentified"), "onUpdate", onNameOrTokenUpdated);
 	DB.removeHandler(DB.getPath(node, "*.token"), "onUpdate", onNameOrTokenUpdated);
 end
 
--- from CoreRPG
-function onOptionWNDCChanged()
-	for _,v in pairs(getWindows()) do
-		v.onHealthChanged();
-	end
-end
-
--- from CoreRPG
-function onNameOrTokenUpdated(vNode)
+function onNameOrTokenUpdated()
 	for _,w in pairs(getWindows()) do
 		w.target_summary.onTargetsChanged();
 		
@@ -55,7 +45,6 @@ function onNameOrTokenUpdated(vNode)
 	end
 end
 
--- from CoreRPG
 function addEntry(bFocus)
 	local w = createWindow();
 	if bFocus and w then
@@ -64,19 +53,16 @@ function addEntry(bFocus)
 	return w;
 end
 
--- from CoreRPG
 function onMenuSelection(selection)
 	if selection == 5 then
 		addEntry(true);
 	end
 end
 
--- from CoreRPG
 function onSortCompare(w1, w2)
 	return CombatManager.onSortCompare(w1.getDatabaseNode(), w2.getDatabaseNode());
 end
 
--- from CoreRPG
 function onHotkey(draginfo)
 	local sDragType = draginfo.getType();
 	if sDragType == "combattrackernextactor" then
@@ -88,7 +74,6 @@ function onHotkey(draginfo)
 	end
 end
 
--- from CoreRPG
 function toggleVisibility()
 	if not enablevisibilitytoggle then
 		return;
@@ -96,13 +81,14 @@ function toggleVisibility()
 	
 	local visibilityon = window.button_global_visibility.getValue();
 	for _,v in pairs(getWindows()) do
-		if visibilityon ~= v.tokenvis.getValue() then
-			v.tokenvis.setValue(visibilityon);
+		if v.friendfoe.getStringValue() ~= "friend" then
+			if visibilityon ~= v.tokenvis.getValue() then
+				v.tokenvis.setValue(visibilityon);
+			end
 		end
 	end
 end
 
--- from CoreRPG
 function toggleTargeting()
 	if not enableglobaltoggle then
 		return;
@@ -114,45 +100,17 @@ function toggleTargeting()
 	end
 end
 
--- from CoreRPG
-function toggleActive()
-  if not enableglobaltoggle then
-    return;
-  end
-  
-  local activeon = window.button_global_active.getValue();
-  for _,v in pairs(getWindows()) do
-    if activeon ~= v.activateactive.getValue() then
-      v.activateactive.setValue(activeon);
-    end
-  end
-end
-function toggleRolls()
-  if not enableglobaltoggle then
-    return;
-  end
-  
-  local rollson = window.button_global_rolls.getValue();
-  for _,v in pairs(getWindows()) do
-    if rollson ~= v.activaterolls.getValue() then
-      v.activaterolls.setValue(rollson);
-    end
-  end
-end
-
--- from CoreRPG
 function toggleSpacing()
-  if not enableglobaltoggle then
-    return;
-  end
-  
-  local spacingon = window.button_global_spacing.getValue();
-  for _,v in pairs(getWindows()) do
-    v.activatespacing.setValue(spacingon);
-  end
+	if not enableglobaltoggle then
+		return;
+	end
+	
+	local spacingon = window.button_global_spacing.getValue();
+	for _,v in pairs(getWindows()) do
+		v.activatespacing.setValue(spacingon);
+	end
 end
 
--- from CoreRPG
 function toggleEffects()
 	if not enableglobaltoggle then
 		return;
@@ -160,13 +118,10 @@ function toggleEffects()
 	
 	local effectson = window.button_global_effects.getValue();
 	for _,v in pairs(getWindows()) do
-		if effectson ~= v.activateeffects.getValue() then
-			v.activateeffects.setValue(effectson);
-		end
+		v.activateeffects.setValue(effectson);
 	end
 end
 
--- from CoreRPG
 function onVisibilityToggle()
 	local anyVisible = 0;
 	for _,v in pairs(getWindows()) do
@@ -180,19 +135,17 @@ function onVisibilityToggle()
 	enablevisibilitytoggle = true;
 end
 
--- from CoreRPG
 function onEntrySectionToggle()
 	local anyTargeting = 0;
-	local anyActive = 0;
-	local anyDefensive = 0;
+	local anySpacing = 0;
 	local anyEffects = 0;
 
 	for _,v in pairs(getWindows()) do
 		if v.activatetargeting.getValue() == 1 then
 			anyTargeting = 1;
 		end
-		if v.activateactive.getValue() == 1 then
-			anyActive = 1;
+		if v.activatespacing.getValue() == 1 then
+			anySpacing = 1;
 		end
 		if v.activateeffects.getValue() == 1 then
 			anyEffects = 1;
@@ -201,12 +154,11 @@ function onEntrySectionToggle()
 
 	enableglobaltoggle = false;
 	window.button_global_targeting.setValue(anyTargeting);
-	window.button_global_active.setValue(anyActive);
+	window.button_global_spacing.setValue(anySpacing);
 	window.button_global_effects.setValue(anyEffects);
 	enableglobaltoggle = true;
 end
 
--- from CoreRPG
 function onDrop(x, y, draginfo)
 	if draginfo.isType("shortcut") then
 		return CampaignDataManager.handleDrop("combattracker", draginfo);
@@ -217,7 +169,7 @@ function onDrop(x, y, draginfo)
 	if win then
 		local nodeWin = win.getDatabaseNode();
 		if nodeWin then
-			return CombatManager.onDrop("ct", nodeWin.getNodeName(), draginfo);
+			return CombatManager.onDrop("ct", nodeWin.getPath(), draginfo);
 		end
 	end
 end

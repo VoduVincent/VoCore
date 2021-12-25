@@ -3,19 +3,15 @@
 -- attribution and copyright information.
 --
 
-function onInit1()
-	deliverLaunchMessage()
-end
-
-function deliverLaunchMessage1()
-    local launchmsg = ChatManager.retrieveLaunchMessages();
-    for keyMessage, rMessage in ipairs(launchmsg) do
-    	Comm.addChatMessage(rMessage);
-    end
-end
-
 function onDiceLanded(draginfo)
+	if ChatManager.onDiceLanded(draginfo) then
+		return true;
+	end
  	return ActionsManager.onDiceLanded(draginfo);
+end
+
+function onReceiveMessage(msg)
+	return ChatManager.onReceiveMessage(msg);
 end
 
 function onDragStart(button, x, y, draginfo)
@@ -23,8 +19,11 @@ function onDragStart(button, x, y, draginfo)
 end
 
 function onDrop(x, y, draginfo)
+	if ChatManager.onDrop(draginfo) then
+		return true;
+	end
+
 	local bReturn = ActionsManager.actionDrop(draginfo, nil);
-	
 	if bReturn then
 		local aDice = draginfo.getDieList();
 		if aDice and #aDice > 0 and not OptionsManager.isOption("MANUALROLL", "on") then
@@ -32,13 +31,4 @@ function onDrop(x, y, draginfo)
 		end
 		return true;
 	end
-	
-	if draginfo.getType() == "language" then
-		LanguageManager.setCurrentLanguage(draginfo.getStringData());
-		return true;
-	end
-end
-
-function onDiceTotal( messagedata )
-  return CustomDiceManager.onDiceTotal(messagedata);
 end

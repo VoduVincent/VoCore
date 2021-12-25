@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+
+<root>
+	<windowclass name="currencylist">
+		<frame>utilitybox3</frame>
+		<placement>
+			<size width="350" height="350" />
+		</placement>
+		<sizelimits>
+			<dynamic />
+			<minimum width="350" height="350" />
+		</sizelimits>
+		<playercontrol />
+		<nodelete />
+		<tooltip textres="currency_window_title" />
+		<sheetdata>
+			<windowtitlebar name="title">
+				<resource>currency_window_title</resource>
+			</windowtitlebar>
+			<anchor_title_utilitybox3 name="contentanchor" />
+			
+			<anchor_bottom_utilitybox3 name="bottomanchor" />
+
+			<list_utility_setting name="list">
+				<class>currencyitem</class>
+				<sortby merge="delete" />
+				<script file="utility/scripts/currency_list.lua"/>
+			</list_utility_setting>
+			<scrollbar_list />
+			
+			<anchor_utility_controls />
+			<button_iedit_utility />
+			<button_iadd_utility />
+			<filter_utility />
+			
+			<resize_utilitybox3 />
+			<close_utilitybox3 />
+		</sheetdata>
+	</windowclass>
+
+	<windowclass name="currencyitem">
+		<margins control="0,0,0,2" />
+		<sheetdata>
+			<genericcontrol name="rightanchor">
+				<anchored position="insidetopright" height="0" width="0" />
+			</genericcontrol>
+			<button_idelete name="idelete">
+				<anchored>
+					<top offset="2" />
+					<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
+				</anchored>
+			</button_idelete>
+			<string_textlistitem name="name">
+				<anchored to="rightanchor" height="20">
+					<top offset="3" />
+					<left parent="" offset="5" />
+					<right anchor="left" relation="relative" offset="-5" />
+				</anchored>
+			</string_textlistitem>
+		</sheetdata>
+	</windowclass>
+</root>

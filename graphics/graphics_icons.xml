@@ -6,464 +6,387 @@
 -->
 
 <root>
-	<!-- MoreCore Tab graphic -->
-	<icon name="tab_more" file="graphics/tabs/tab_more.png" />
-	<icon name="tab_moredata" file="graphics/tabs/tab_moredata.png" />
-	<icon name="spell_stats" file="graphics/icons/spells.png" />
-	<icon name="spell_points" file="graphics/icons/spellpoints.png" />
-	<icon name="switch" file="graphics/icons/switch.png" />
-	<icon name="switchbook" file="graphics/icons/switch-book.png" />
-	<icon name="switchrolls" file="graphics/icons/switch-rolls.png" />
-	<icon name="spellicon" file="graphics/icons/spell.png" />
-	<icon name="crown" file="graphics/icons/crown.png" />
- 
-	<!-- Die Hard Decal -->
- 	<icon name="desktopdecal_morecore" file="graphics/decal/id-decal.png" />
-
-	<!-- MoreCore NPC Rolls Tab graphic -->
-	<icon name="tab_rolls" file="graphics/tabs/tab_rolls.png" />
-	
+	<icon name="rulesetlogo_CoreRPG" file="graphics/icons/rulesetlogo_CoreRPG.png" />
 
 	<!-- Common -->
+	<icon name="window_resize" file="graphics/icons/window_resize.png" />
+	<icon name="window_resize_filled" file="graphics/icons/window_resize_filled.png" />
+	<icon name="button_expand" file="graphics/buttons/button_expand.png" />
+	<icon name="button_collapse" file="graphics/buttons/button_collapse.png" />
+	<icon name="button_expand_w" file="graphics/buttons/button_expand_w.png" />
+	<icon name="button_collapse_w" file="graphics/buttons/button_collapse_w.png" />
+	<icon name="footer_wide" file="graphics/icons/footer_wide.png" />
+	<icon name="footer_narrow" file="graphics/icons/footer_narrow.png" />
+	<icon name="button_close" file="graphics/buttons/button_close.png" />
+	<icon name="button_close_down" file="graphics/buttons/button_close_down.png" />
+	<icon name="button_close_hover" file="graphics/buttons/button_close_hover.png" />
+	<icon name="button_help" file="graphics/buttons/button_help.png" />
+	<icon name="button_help_down" file="graphics/buttons/button_help_down.png" />
+	<icon name="button_help_hover" file="graphics/buttons/button_help_hover.png" />
+	<icon name="button_sizeup" file="graphics/buttons/button_sizeup.png" />
+	<icon name="button_sizeup_down" file="graphics/buttons/button_sizeup_down.png" />
+	<icon name="button_sizeup_hover" file="graphics/buttons/button_sizeup_hover.png" />
+	<icon name="button_sizedown" file="graphics/buttons/button_sizedown.png" />
+	<icon name="button_sizedown_down" file="graphics/buttons/button_sizedown_down.png" />
+	<icon name="button_sizedown_hover" file="graphics/buttons/button_sizedown_hover.png" />
 	<icon name="button_link" file="graphics/buttons/button_link.png" />
 	<icon name="button_link_down" file="graphics/buttons/button_link_down.png" />
-	
-	<!-- Sidebar Small -->
-	<icon name="button_ct" file="graphics/sidebar/but_combattracker.png" />
-	<icon name="button_ct_down" file="graphics/sidebar/but_down.png" />
-	<icon name="button_partysheet" file="graphics/sidebar/but_partysheet.png" />
-	<icon name="button_partysheet_down" file="graphics/sidebar/but_down.png" />
-	<icon name="button_options" file="graphics/sidebar/but_options.png" />
-	<icon name="button_options_down" file="graphics/sidebar/but_down.png" />
-	<icon name="button_calendar" file="graphics/sidebar/but_calendar.png" />
-	<icon name="button_calendar_down" file="graphics/sidebar/but_down.png" />
-	<icon name="button_color" file="graphics/sidebar/but_colours.png" />
-	<icon name="button_color_down" file="graphics/sidebar/but_down.png" />
-	<icon name="button_light" file="graphics/sidebar/but_moodlighting.png" />
-	<icon name="button_light_down" file="graphics/sidebar/but_down.png" />
-	<icon name="button_modifiers" file="graphics/sidebar/but_modifiers.png" />
-	<icon name="button_modifiers_down" file="graphics/sidebar/but_down.png" />
-	<icon name="button_effects" file="graphics/sidebar/but_effects.png" />
-	<icon name="button_effects_down" file="graphics/sidebar/but_down.png" />
+	<icon name="button_link_empty" file="graphics/buttons/button_link_empty.png" />
+	<icon name="button_link_share" file="graphics/buttons/button_link_share.png" />
+	<icon name="button_link_share_down" file="graphics/buttons/button_link_share_down.png" />
+	<icon name="button_checkon" file="graphics/buttons/button_checkon.png" />
+	<icon name="button_checkoff" file="graphics/buttons/button_checkoff.png" />
+	<icon name="token_empty" file="graphics/icons/token_empty.png" />
+	<icon name="button_arrowdown" file="graphics/buttons/button_arrowdown.png" />
+	<icon name="button_arrowdown_down" file="graphics/buttons/button_arrowdown_down.png" />
+	<icon name="tempmod" file="graphics/icons/tempmod.png" />
+	<icon name="coins" file="graphics/icons/coins.png" />
+	<icon name="xp" file="graphics/icons/xp.png" />
+	<icon name="blank" file="graphics/icons/blank.png" />
+	<icon name="shopping" file="graphics/icons/shopping.png" />
 
-	<!-- Sidebar Large
-	<icon name="button_book" file="graphics/sidebar/button_wide.png" />
-	<icon name="button_book_down" file="graphics/sidebar/button_wide_down.png" />
-	<icon name="button_characters" file="graphics/sidebar/button_wide.png" />
-	<icon name="button_characters_down" file="graphics/sidebar/button_wide_down.png" />
-	<icon name="button_maps" file="graphics/sidebar/button_wide.png" />
-	<icon name="button_maps_down" file="graphics/sidebar/button_wide_down.png" />
-	<icon name="button_people" file="graphics/sidebar/button_wide.png" />
-	<icon name="button_people_down" file="graphics/sidebar/button_wide_down.png" />
-	<icon name="button_encounters" file="graphics/sidebar/button_wide.png" />
-	<icon name="button_encounters_down" file="graphics/sidebar/button_wide_down.png" />
-	<icon name="button_items" file="graphics/sidebar/button_wide.png" />
-	<icon name="button_items_down" file="graphics/sidebar/button_wide_down.png" />
-	<icon name="button_parcels" file="graphics/sidebar/button_wide.png" />
-	<icon name="button_parcels_down" file="graphics/sidebar/button_wide_down.png" />
-	<icon name="button_notes" file="graphics/sidebar/button_wide.png" />
-	<icon name="button_notes_down" file="graphics/sidebar/button_wide_down.png" />
-	<icon name="button_library" file="graphics/sidebar/button_wide.png" />
-	<icon name="button_library_down" file="graphics/sidebar/button_wide_down.png" />
-	<icon name="button_tokencase" file="graphics/sidebar/button_wide.png" />
-	<icon name="button_tokencase_down" file="graphics/sidebar/button_wide_down.png" />
-	<icon name="button_tables" file="graphics/sidebar/button_wide.png" />
-	<icon name="button_tables_down" file="graphics/sidebar/button_wide_down.png" />
-	<icon name="button_quests" file="graphics/sidebar/button_wide.png" />
-	<icon name="button_quests_down" file="graphics/sidebar/button_wide_down.png" />
-	<icon name="button_cas" file="graphics/sidebar/button_wide.png" />
-	<icon name="button_cas_down" file="graphics/sidebar/button_wide_down.png" />
-	<icon name="button_trackers" file="graphics/sidebar/button_wide.png" />
-	<icon name="button_trackers_down" file="graphics/sidebar/button_wide_down.png" />
-	<icon name="button_mcability" file="graphics/sidebar/button_wide.png" />
-	<icon name="button_mcability_down" file="graphics/sidebar/button_wide_down.png" />
-	<icon name="button_mcmod" file="graphics/sidebar/button_wide.png" />
-	<icon name="button_mcmod_down" file="graphics/sidebar/button_wide_down.png" />
-	<icon name="button_vehicles" file="graphics/sidebar/button_wide.png" />
-	<icon name="button_vehicles_down" file="graphics/sidebar/button_wide_down.png" />
-	<icon name="button_spells" file="graphics/sidebar/button_wide.png" />
-	<icon name="button_spells_down" file="graphics/sidebar/button_wide_down.png" />
-	<icon name="button_mc_locations" file="graphics/sidebar/button_wide.png" />
-	<icon name="button_mc_locations_down" file="graphics/sidebar/button_wide_down.png" />
-	<icon name="button_world_down" file="graphics/sidebar/button_wide_down.png" />
-	<icon name="button_world" file="graphics/sidebar/button_wide.png" />
-	<icon name="button_investigator_down" file="graphics/sidebar/button_wide_down.png" />
-	<icon name="button_investigator" file="graphics/sidebar/button_wide.png" />
-	<icon name="button_mc_organisations" file="graphics/sidebar/button_wide.png" />
-	<icon name="button_mc_organisations_down" file="graphics/sidebar/button_wide_down.png" />
-	<icon name="button_pcclass" file="graphics/sidebar/button_wide.png" />
-	<icon name="button_pcclass_down" file="graphics/sidebar/button_wide_down.png" />	
-	<icon name="button_pcrace" file="graphics/sidebar/button_wide.png" />
-	<icon name="button_pcrace_down" file="graphics/sidebar/button_wide_down.png" />	  -->
+	<icon name="button_add" file="graphics/buttons/button_add.png" />
+	<icon name="button_add_down" file="graphics/buttons/button_add_down.png" />
+	<icon name="button_edit" file="graphics/buttons/button_edit.png" />
+	<icon name="button_edit_down" file="graphics/buttons/button_edit_down.png" />
+	<icon name="button_delete" file="graphics/buttons/button_delete.png" />
+	<icon name="button_delete_down" file="graphics/buttons/button_delete_down.png" />
+	<icon name="button_deleteconfirm" file="graphics/buttons/button_deleteconfirm.png" />
+	<icon name="button_deleteconfirm_down" file="graphics/buttons/button_deleteconfirm_down.png" />
+	<icon name="button_back" file="graphics/buttons/button_back.png" />
+	<icon name="button_back_down" file="graphics/buttons/button_back_down.png" />
+	<icon name="button_import" file="graphics/buttons/button_import.png" />
+	<icon name="button_import_down" file="graphics/buttons/button_import_down.png" />
+	<icon name="button_import_text" file="graphics/buttons/button_import_text.png" />
+	<icon name="button_import_text_down" file="graphics/buttons/button_import_text_down.png" />
+	<icon name="button_export" file="graphics/buttons/button_export.png" />
+	<icon name="button_export_down" file="graphics/buttons/button_export_down.png" />
+	<icon name="button_zoomin" file="graphics/buttons/button_zoomin.png" />
+	<icon name="button_zoomin_down" file="graphics/buttons/button_zoomin_down.png" />
+	<icon name="button_zoomout" file="graphics/buttons/button_zoomout.png" />
+	<icon name="button_zoomout_down" file="graphics/buttons/button_zoomout_down.png" />
+	<icon name="button_grid" file="graphics/buttons/button_grid.png" />
+	<icon name="button_lines" file="graphics/buttons/button_lines.png" />
 
+	<icon name="button_action_attack" file="graphics/buttons/button_action_attack.png" />
+	<icon name="button_action_attack_down" file="graphics/buttons/button_action_attack_down.png" />
+	<icon name="button_action_damage" file="graphics/buttons/button_action_damage.png" />
+	<icon name="button_action_damage_down" file="graphics/buttons/button_action_damage_down.png" />
+	<icon name="button_action_heal" file="graphics/buttons/button_action_heal.png" />
+	<icon name="button_action_heal_down" file="graphics/buttons/button_action_heal_down.png" />
+	<icon name="button_action_effect" file="graphics/buttons/button_action_effect.png" />
+	<icon name="button_action_effect_down" file="graphics/buttons/button_action_effect_down.png" />
+	<icon name="button_action_modifier" file="graphics/buttons/button_action_modifier.png" />
+	<icon name="button_action_modifier_down" file="graphics/buttons/button_action_modifier_down.png" />
 	
-	<!-- Buttons -->
-	<icon name="tabtop" file="graphics/tabs/tabtop.png" />
+	<icon name="button_clear" file="graphics/buttons/button_clear.png" />
+	<icon name="button_clear_down" file="graphics/buttons/button_clear_down.png" />
+
+	<icon name="combobox_button" file="graphics/icons/combobox_button.png" />
+	<icon name="combobox_button_active" file="graphics/icons/combobox_button_active.png" />
+
+	<icon name="button_dialog_ok" file="graphics/buttons/button_dialog_ok.png" />
+	<icon name="button_dialog_ok_down" file="graphics/buttons/button_dialog_ok_down.png" />
+	<icon name="button_dialog_cancel" file="graphics/buttons/button_dialog_cancel.png" />
+	<icon name="button_dialog_cancel_down" file="graphics/buttons/button_dialog_cancel_down.png" />
+	<icon name="button_dialog_roll" file="graphics/buttons/button_dialog_roll.png" />
+	<icon name="button_dialog_roll_down" file="graphics/buttons/button_dialog_roll_down.png" />
+	<icon name="button_dialog_fauxroll" file="graphics/buttons/button_dialog_fauxroll.png" />
+	<icon name="button_dialog_fauxroll_down" file="graphics/buttons/button_dialog_fauxroll_down.png" />
+
+	<icon name="button_details" file="graphics/buttons/button_details.png" />
+	<icon name="button_details_down" file="graphics/buttons/button_details_down.png" />
+
+	<!-- Headers -->
+	<icon name="button_header_locked_on" file="graphics/header/button_header_locked_on.png" />
+	<icon name="button_header_locked_off" file="graphics/header/button_header_locked_off.png" />
+	<icon name="button_header_reset" file="graphics/header/button_header_reset.png" />
+
+	<!-- Master index -->
+	<icon name="button_page_start" file="graphics/icons/arrow_sm_first.png" />
+	<icon name="button_page_prev" file="graphics/icons/arrow_sm_left.png" />
+	<icon name="button_page_next" file="graphics/icons/arrow_sm_right.png" />
+	<icon name="button_page_end" file="graphics/icons/arrow_sm_last.png" />
+	<icon name="button_page_top" file="graphics/icons/arrow_sm_up.png" />
 	
 	<!-- Dragging -->
+	<icon name="action_roll" file="graphics/icons/action_roll.png" />
+	<icon name="action_effect" file="graphics/icons/action_effect.png" />
+	<icon name="action_attack" file="graphics/icons/action_attack.png" />
+	<icon name="action_damage" file="graphics/icons/action_damage.png" />
+	<icon name="action_heal" file="graphics/icons/action_heal.png" />
+	<icon name="action_option" file="graphics/icons/action_option.png" />
 
 	<!-- Rolls -->
-	<!-- Used for CT Tracking -->
-	<icon name="ct_turn" file="graphics/icons/button_turn.png" />
-	<icon name="ct_noturn" file="graphics/icons/button_noturn.png" />
-
-	<!-- Used for The Hero Point message display -->
-	<icon name="heropoints" file="graphics/icons/diamond.png" />
-	<icon name="heroindicator" file="graphics/icons/hero-points.png" />
-	<icon name="villainpoints" file="graphics/icons/darkstone.png" />
-
-	<!-- Widget -->
-	<icon name="bonuswidget" file="graphics/icons/bonus_widget.png" />
-	<icon name="bonuswidgeton" file="graphics/icons/bonus_widget_on.png" />
-
-	<!-- Campaign Lists -->
-	
-	<!-- Character Sheet -->
-	<icon name="smallwound" file="graphics/icons/smallwound.png" />
-	<icon name="largewound" file="graphics/icons/largewound.png" />
-	<icon name="nowound" file="graphics/icons/nowound.png" />
-	<icon name="rulesetlogo" file="graphics/icons/morecore-ruleset.png" />
-
-	<!-- Rolls -->
-	<icon name="down" file="graphics/icons/button_blank_small.png" />
-	<icon name="rolls" file="graphics/icons/button_roll.png" />
-	<icon name="modifier" file="graphics/icons/button_modifier.png" />
-	<icon name="table" file="graphics/icons/button_table.png" />
-	<icon name="chat" file="graphics/icons/button_chat.png" />
-	<icon name="attack" file="graphics/icons/button_attack.png" />
-	<icon name="heal" file="graphics/icons/button_heal.png" />
-	<icon name="saving" file="graphics/icons/button_save.png" />
-	<icon name="damage" file="graphics/icons/button_damage.png" />
-	<icon name="spell" file="graphics/icons/button_spell.png" />
-	<icon name="cleric" file="graphics/icons/button_cleric.png" />
-	<icon name="wizard" file="graphics/icons/button_wizard.png" />
-	<icon name="bard" file="graphics/icons/button_bard.png" />
-	<icon name="rank" file="graphics/icons/button_rank.png" />
-	<icon name="druid" file="graphics/icons/button_druid.png" />
-	<icon name="skull" file="graphics/icons/button_skull.png" />
-	<icon name="flame" file="graphics/icons/button_flame.png" />
-	<icon name="fireball" file="graphics/icons/button_fireball.png" />
-	<icon name="pent" file="graphics/icons/button_pent.png" />
-	<icon name="hitos" file="graphics/icons/button_hitos.png" />
-	<icon name="talislanta" file="graphics/icons/button_talislanta.png" />
-	<icon name="legenddmg" file="graphics/icons/button_rnkd.png" />
-	<icon name="symb" file="graphics/icons/button_symb.png" />
-	<icon name="legend" file="graphics/icons/button_rnk.png" />
-	<icon name="legendemph" file="graphics/icons/button_rnke.png" />
-	<icon name="harn" file="graphics/icons/button_harn.png" />
-	<icon name="harnskill" file="graphics/icons/button_harnskill.png" />
-	<icon name="harnroll" file="graphics/icons/button_harnroll.png" />
-	<icon name="dsr" file="graphics/icons/button_dsr.png" />
-	<icon name="conan" file="graphics/icons/button_conan.png" />
-	<icon name="crom" file="graphics/icons/button_crom.png" />
-	<icon name="exalted" file="graphics/icons/button_exalted.png" />
-	<icon name="exaltedx" file="graphics/icons/button_exalted.png" />
-	<icon name="exalteddmg" file="graphics/icons/button_exalted_dmg.png" />
-	<icon name="ring" file="graphics/icons/button_l5r.png" />
-	<icon name="traveller" file="graphics/icons/button_d6.png" />
-	<icon name="blackcrusade" file="graphics/icons/button_bc.png" />
-	<icon name="cypher" file="graphics/icons/button_cypher.png" />
-	<icon name="pbta" file="graphics/icons/button_pbta.png" />
-	<icon name="pulpinv" file="graphics/icons/button_pulpinv.png" />
-	<icon name="pulpgen" file="graphics/icons/button_pulpgen.png" />
-	<icon name="myhand" file="graphics/icons/button_hand.png" />
-	<icon name="animal" file="graphics/icons/button_animal.png" />
-	<icon name="helmet" file="graphics/icons/button_helmet.png" />
-	<icon name="bomb" file="graphics/icons/button_bomb.png" />
-	<icon name="bomborange" file="graphics/icons/button_bomb-orange.png" />
-	<icon name="dragon" file="graphics/icons/button_dragon.png" />
-	<icon name="boon" file="graphics/icons/button_boon.png" />
-	<icon name="bane" file="graphics/icons/button_bane.png" />
-	<icon name="coriolis" file="graphics/icons/button_coriolis.png" />
-	<icon name="vtr" file="graphics/icons/button_vtr.png" />
-	<icon name="ubiquity" file="graphics/icons/button_ubiquity.png" />
-	<icon name="rnk" file="graphics/icons/button_rnk.png" />
-	<icon name="rnkd" file="graphics/icons/button_rnkd.png" />
-	<icon name="champions" file="graphics/icons/button_champions.png" />
-	<icon name="champions-stun" file="graphics/icons/button_champions-stun.png" />
-	<icon name="champions-kill" file="graphics/icons/button_champions-kill.png" />
-	<icon name="champions-skill" file="graphics/icons/button_champions-skill.png" />
-	<icon name="wod" file="graphics/icons/button_wod.png" />
-	<icon name="yinyang" file="graphics/icons/button_yinyang.png" />
-	<icon name="successes" file="graphics/icons/button_successes.png" />
-	<icon name="sfdice" file="graphics/icons/button_sfdice.png" />
-	<icon name="bfeat" file="graphics/icons/button_bfeat.png" />
-	<icon name="stunt" file="graphics/icons/button_d6_green.png" />
-	<icon name="agestunt" file="graphics/icons/button_d6_green.png" />
-	<icon name="stuntdmg" file="graphics/icons/button_d6_red.png" />
-	<icon name="melee" file="graphics/icons/button_melee.png" />
-	<icon name="ranged" file="graphics/icons/button_ranged.png" />
-	<icon name="reaction" file="graphics/icons/button_reaction.png" />
-	<icon name="talent" file="graphics/icons/button_talent.png" />
-	<icon name="bsave" file="graphics/icons/button_save.png" />
-	<icon name="bspell" file="graphics/icons/button_spell.png" />
-	<icon name="bcleric" file="graphics/icons/button_cleric.png" />
-	<icon name="btalent" file="graphics/icons/button_talent.png" />
-	<icon name="btechnique" file="graphics/icons/button_hand.png" />
-	<icon name="rolllow" file="graphics/icons/button_d6.png" />
-	<icon name="challenge" file="graphics/icons/button_challenge.png" />
-	<icon name="dsaatt" file="graphics/icons/button_dsaatt.png" />
-	<icon name="dsaatk" file="graphics/icons/button_dsaatk.png" />
-	<icon name="dsaskill" file="graphics/icons/button_dsaskill.png" />
-	<icon name="dsainit" file="graphics/icons/button_dsaskill.png" />
-	<icon name="dsadamage" file="graphics/icons/button_dsaatk.png" />	
-	<icon name="ave" file="graphics/icons/button_ave.png" />
-	<icon name="trolls" file="graphics/icons/button_trolls.png" />
-	<icon name="torgu" file="graphics/icons/button_torgu.png" />
-	<icon name="torgbd" file="graphics/icons/button_torgdmg.png" />
-	<icon name="torg" file="graphics/icons/button_torg.png" />
-	<icon name="vagrant" file="graphics/icons/button_vagrant.png" />
-    <icon name="mamen" file="graphics/icons/button_mamen.png" />
-    <icon name="maweapon" file="graphics/icons/button_maweapon.png" />
-	<icon name="pnp" file="graphics/icons/button_pnp.png" />
-	<icon name="tiny" file="graphics/icons/button_tiny.png" />
-	<icon name="kult" file="graphics/icons/button_kult.png" />
-	<icon name="weg" file="graphics/icons/button_weg.png" />
-	<icon name="weg2" file="graphics/icons/button_weg.png" />
-	<icon name="unisystem" file="graphics/icons/button_unisystem.png" />
-	<icon name="crit" file="graphics/icons/button_crit.png" />
-	<icon name="ad2300" file="graphics/icons/button_2300.png" />
-	<icon name="btech" file="graphics/icons/button_btech.png" />
-	<icon name="btechu" file="graphics/icons/button_btechu.png" />
-	<icon name="frag" file="graphics/icons/button_frag.png" />
-	<icon name="fragatt" file="graphics/icons/button_frag.png" />
-	<icon name="hackm" file="graphics/icons/button_hackm.png" />
-	<icon name="hackmbs" file="graphics/icons/button_hackmbs.png" />
-	<icon name="cod" file="graphics/icons/button_cod.png" />
-	<icon name="witcher" file="graphics/icons/button_witcher.png" />
-	<icon name="witcherattack" file="graphics/icons/button_witcher_attack.png" />
-	<icon name="witchermonster" file="graphics/icons/button_witcher_monster.png" />
-	<icon name="masterbook" file="graphics/icons/button_masterbook.png" />
-	<icon name="afmbe" file="graphics/icons/button_afmbe.png" />
-	<icon name="seventh" file="graphics/icons/button_seventh.png" />
-	<icon name="wrath" file="graphics/icons/button_wrath.png" />
-	<icon name="wrathe" file="graphics/icons/button_wrathe.png" />
-	<icon name="wrathp" file="graphics/icons/button_wrathp.png" />
-	<icon name="wrathdmg" file="graphics/icons/button_wrathdmg.png" />
-	<icon name="wrathdmgb" file="graphics/icons/button_wrathdmgb.png" />
-	<icon name="wrathdmgm" file="graphics/icons/button_wrathdmgm.png" />
-	<icon name="arsmagica" file="graphics/icons/button_arsmagica.png" />
-	<icon name="myinit" file="graphics/icons/button_d6_blue.png" />
-	<icon name="factwelve" file="graphics/icons/button_factwelve.png" />
-	<icon name="earthdawn" file="graphics/icons/button_earthdawn.png" />
-	<icon name="openlegend" file="graphics/icons/button_openlegend.png" />
-	<icon name="openlegend_down" file="graphics/icons/button_openlegend_down.png" />
-	<icon name="dbdamage" file="graphics/icons/button_blood.png" />
-	<icon name="damageme" file="graphics/icons/button_damageme.png" />
-	<icon name="healme" file="graphics/icons/button_healme.png" />
-	<icon name="gsdamage" file="graphics/icons/button_blood.png" />
-	<icon name="srun4" file="graphics/icons/button_srun4.png" />
-	<icon name="gumshoe" file="graphics/icons/button_gumshoe.png" />
-	<icon name="iron" file="graphics/icons/button_ironsworn.png" />
-	<icon name="gsattack" file="graphics/icons/button_gun.png" />
-	<icon name="spellpoints" file="graphics/icons/button_gear.png" />
-	<icon name="c1mod" file="graphics/icons/button_c1.png" />
-	<icon name="c2mod" file="graphics/icons/button_c2.png" />
-	<icon name="c3mod" file="graphics/icons/button_c3.png" />
-	<icon name="c4mod" file="graphics/icons/button_c4.png" />
-	<icon name="c5mod" file="graphics/icons/button_c5.png" />
-	<icon name="button_hide" file="graphics/icons/button_hide.png" />
-	<icon name="damagedr" file="graphics/icons/button_damagedr.png" />
-	<icon name="damagedr4" file="graphics/icons/button_damagedr.png" />
-	<icon name="unidamage" file="graphics/icons/button_unidamage.png" />
-	<icon name="drwho" file="graphics/icons/button_d6_red.png" />
-	<icon name="strife" file="graphics/icons/button_strife.png" />
-	<icon name="earth" file="graphics/icons/button_earth.png" />
-	<icon name="void" file="graphics/icons/button_void.png" />
-	<icon name="void" file="graphics/icons/button_void.png" />
-	<icon name="void" file="graphics/icons/button_void.png" />
-	<icon name="d6black" file="graphics/icons/button_d6_black.png" />
-	<icon name="d6red" file="graphics/icons/button_d6_red.png" />
-	<icon name="d6green" file="graphics/icons/button_d6_green.png" />
-	<icon name="d6blue" file="graphics/icons/button_d6_blue.png" />
-	<icon name="mythras" file="graphics/icons/button_mythras.png" />
-	<icon name="battled6" file="graphics/icons/button_battled6.png" />
-	<icon name="vermine" file="graphics/icons/button_vermine.png" />
-	<icon name="vaesen" file="graphics/icons/button_vaesen.png" />
-	<icon name="mother1" file="graphics/icons/button_mother1.png" />
-	<icon name="mother2" file="graphics/icons/button_mother2.png" />
-	<icon name="vda" file="graphics/icons/button_vda.png" />
-	<icon name="rpexa" file="graphics/icons/button_rpexa.png" />
-	<icon name="blades" file="graphics/icons/button_blades.png" />
-	<icon name="rk" file="graphics/icons/button_rk.png" />
-	<icon name="topsecret" file="graphics/icons/button_topsecret.png" />
-	<icon name="rngroll" file="graphics/icons/button_random.png" />
-	<icon name="tsprimary" file="graphics/icons/button_tsprimary.png" />
-	<icon name="tstertiary" file="graphics/icons/button_tstertiary.png" />
-	<icon name="tslife" file="graphics/icons/button_tslife.png" />
-	<icon name="tsmove" file="graphics/icons/button_tsmove.png" />
-	<icon name="tsdamage" file="graphics/icons/button_tsdamage.png" />
-	<icon name="atkatow" file="graphics/icons/button_atkatow.png" />
-	<icon name="btdamage" file="graphics/icons/button_btdamage.png" />
-	<icon name="question" file="graphics/icons/button_question.png" />
-
-	<icon name="chatimage" file="graphics/icons/button_chatimage.png" />
-
-	<!-- Tokens - Dice -->
-	<icon name="d60icon" file="graphics/icons/d6060.png" />
-	<icon name="d600icon" file="graphics/icons/d600600.png" />
-	<icon name="d4ricon" file="graphics/icons/d4_ricon.png" />
-	<icon name="d6ricon" file="graphics/icons/d6_ricon.png" />
-	<icon name="d8ricon" file="graphics/icons/d8_ricon.png" />
-	<icon name="d10ricon" file="graphics/icons/d10_ricon.png" />
-	<icon name="d12ricon" file="graphics/icons/d12_ricon.png" />
-	<icon name="d20ricon" file="graphics/icons/d20_ricon.png" />
-	<icon name="d4gicon" file="graphics/icons/d4_gicon.png" />
-	<icon name="d6gicon" file="graphics/icons/d6_gicon.png" />
-	<icon name="d8gicon" file="graphics/icons/d8_gicon.png" />
-	<icon name="d10gicon" file="graphics/icons/d10_gicon.png" />
-	<icon name="d12gicon" file="graphics/icons/d12_gicon.png" />
-	<icon name="d20gicon" file="graphics/icons/d20_gicon.png" />
-	<icon name="d4bicon" file="graphics/icons/d4_bicon.png" />
-	<icon name="d6bicon" file="graphics/icons/d6_bicon.png" />
-	<icon name="d8bicon" file="graphics/icons/d8_bicon.png" />
-	<icon name="d10bicon" file="graphics/icons/d10_bicon.png" />
-	<icon name="d12bicon" file="graphics/icons/d12_bicon.png" />
-	<icon name="d20bicon" file="graphics/icons/d20_bicon.png" />
-	<icon name="d4yicon" file="graphics/icons/d4_yicon.png" />
-	<icon name="d6yicon" file="graphics/icons/d6_yicon.png" />
-	<icon name="d8yicon" file="graphics/icons/d8_yicon.png" />
-	<icon name="d10yicon" file="graphics/icons/d10_yicon.png" />
-	<icon name="d12yicon" file="graphics/icons/d12_yicon.png" />
-	<icon name="d20yicon" file="graphics/icons/d20_yicon.png" />
-	
-  <!-- dot control icons -->
-  <icon name="dot_checked" file="graphics/icons/dot_checked.png" />
-  <icon name="dot_unchecked" file="graphics/icons/dot_unchecked.png" />
-
-  <!-- Misc -->
-
-	<!-- Override CoreRPG ruleset graphics -->
-
-	<!-- Dice tower -->
-
-	<!-- Common -->
+	<icon name="roll_effect" file="graphics/icons/roll_effect.png" />
 
 	<!-- Chat window -->
+	<icon name="chat_speak" file="graphics/icons/chat_speak.png" />
+	<icon name="chat_story" file="graphics/icons/chat_story.png" />
+	<icon name="chat_action" file="graphics/icons/chat_action.png" />
+	<icon name="chat_ooc" file="graphics/icons/chat_ooc.png" />
+	<icon name="chat_emote" file="graphics/icons/chat_emote.png" />
+	<icon name="poll_check" file="graphics/icons/poll_check.png" />
+	<icon name="poll_empty" file="graphics/icons/poll_empty.png" />
+	<icon name="poll_negative" file="graphics/icons/poll_negative.png" />
+	<icon name="chat_wait" file="graphics/icons/chat_wait.png" />
+	<icon name="indicator_stop" file="graphics/icons/indicator_stop.png" />
+	<icon name="indicator_prompt" file="graphics/icons/indicator_prompt.png" />
+	<icon name="indicator_whisper" file="graphics/icons/indicator_whisper.png" />
+	<icon name="gmdieicon" file="graphics/icons/gmdie_icon.png" />
+
+	<!-- Char window dice icons -->
+	<!-- NOTE: Colored die icons generated using Photoshop adjustment layer with Colorize option enabled -->
+	<!-- NOTE: Hue/Saturation/Lightness (Green: 120/50/25) (Blue: 240/70/25) (Purple: 260/50/25) (Red: 0/70/20) -->
+	<icon name="die_general_icon" file="graphics/dice/die_general_icon.png" />
+	<icon name="d4icon" file="graphics/dice/d4_icon.png" />
+	<icon name="d6icon" file="graphics/dice/d6_icon.png" />
+	<icon name="d8icon" file="graphics/dice/d8_icon.png" />
+	<icon name="d10icon" file="graphics/dice/d10_icon.png" />
+	<icon name="d12icon" file="graphics/dice/d12_icon.png" />
+	<icon name="d20icon" file="graphics/dice/d20_icon.png" />
+
+	<icon name="d4ricon" file="graphics/dice/d4_ricon.png" />
+	<icon name="d6ricon" file="graphics/dice/d6_ricon.png" />
+	<icon name="d8ricon" file="graphics/dice/d8_ricon.png" />
+	<icon name="d10ricon" file="graphics/dice/d10_ricon.png" />
+	<icon name="d12ricon" file="graphics/dice/d12_ricon.png" />
+	<icon name="d20ricon" file="graphics/dice/d20_ricon.png" />
+
+	<icon name="d4gicon" file="graphics/dice/d4_gicon.png" />
+	<icon name="d6gicon" file="graphics/dice/d6_gicon.png" />
+	<icon name="d8gicon" file="graphics/dice/d8_gicon.png" />
+	<icon name="d10gicon" file="graphics/dice/d10_gicon.png" />
+	<icon name="d12gicon" file="graphics/dice/d12_gicon.png" />
+	<icon name="d20gicon" file="graphics/dice/d20_gicon.png" />
+
+	<icon name="d4bicon" file="graphics/dice/d4_bicon.png" />
+	<icon name="d6bicon" file="graphics/dice/d6_bicon.png" />
+	<icon name="d8bicon" file="graphics/dice/d8_bicon.png" />
+	<icon name="d10bicon" file="graphics/dice/d10_bicon.png" />
+	<icon name="d12bicon" file="graphics/dice/d12_bicon.png" />
+	<icon name="d20bicon" file="graphics/dice/d20_bicon.png" />
+
+	<icon name="d4picon" file="graphics/dice/d4_picon.png" />
+	<icon name="d6picon" file="graphics/dice/d6_picon.png" />
+	<icon name="d8picon" file="graphics/dice/d8_picon.png" />
+	<icon name="d10picon" file="graphics/dice/d10_picon.png" />
+	<icon name="d12picon" file="graphics/dice/d12_picon.png" />
+	<icon name="d20picon" file="graphics/dice/d20_picon.png" />
 
 	<!-- Character list -->
+	<icon name="charlist_typing" file="graphics/icons/charlist_typing.png" />
+	<icon name="charlist_idling" file="graphics/icons/charlist_idling.png" />
+	<icon name="charlist_afk" file="graphics/icons/charlist_afk.png" />
+	<icon name="charlist_pointer" file="graphics/icons/charlist_pointer.png" />
 
 	<!-- Modifier stack -->
-
+	<icon name="modcollector" file="graphics/icons/modcollector.png" />
+	<icon name="modcollector_counter" file="graphics/icons/modcollector_counter.png" />
+	
+	<!-- Dice tower -->
+	<icon name="dicetower_icon" file="graphics/icons/dicetower_icon.png" />
+	
 	<!-- Token Bag -->
+	<icon name="tokenbag" file="graphics/icons/tokenbag.png" />
+	<icon name="tokenbagup" file="graphics/icons/tokenbag_up.png" />
+	
+	<!-- Sidebar -->
+	<icon name="button_ct" file="graphics/sidebar/button_ct.png" />
+	<icon name="button_ct_down" file="graphics/sidebar/button_ct_down.png" />
+	<icon name="button_partysheet" file="graphics/sidebar/button_partysheet.png" />
+	<icon name="button_partysheet_down" file="graphics/sidebar/button_partysheet_down.png" />
+	<icon name="button_options" file="graphics/sidebar/button_options.png" />
+	<icon name="button_options_down" file="graphics/sidebar/button_options_down.png" />
+	<icon name="button_calendar" file="graphics/sidebar/button_calendar.png" />
+	<icon name="button_calendar_down" file="graphics/sidebar/button_calendar_down.png" />
+	<icon name="button_color" file="graphics/sidebar/button_color.png" />
+	<icon name="button_color_down" file="graphics/sidebar/button_color_down.png" />
+	<icon name="button_modifiers" file="graphics/sidebar/button_modifiers.png" />
+	<icon name="button_modifiers_down" file="graphics/sidebar/button_modifiers_down.png" />
+	<icon name="button_effects" file="graphics/sidebar/button_effects.png" />
+	<icon name="button_effects_down" file="graphics/sidebar/button_effects_down.png" />
 
-	<!-- World Chat -->
-	<icon name="button_chat" file="graphics/icons/chat.png" />
-	<icon name="button_pcedit" file="graphics/icons/edit.png" />
-	<icon name="button_pcsubmit" file="graphics/icons/submit.png" />
+	<!-- Library / Modules -->
+	<icon name="module_loaded" file="graphics/icons/module_loaded.png" />
+	<icon name="module_unloaded" file="graphics/icons/module_unloaded.png" />
+	<icon name="module_loading" file="graphics/icons/module_loading.png" />
+	<icon name="module_unloading" file="graphics/icons/module_unloading.png" />
+	<icon name="module_stateblocked" file="graphics/icons/module_stateblocked.png" />
+	<icon name="module_stateallowed" file="graphics/icons/module_stateallowed.png" />
+	<icon name="module_remote" file="graphics/icons/module_remote.png" />
 	
-	<!-- Lighting -->
+	<!-- Calendar -->
+	<icon name="calendar" file="graphics/icons/calendar.png" />
+	<icon name="dot_red" file="graphics/icons/dot_red.png" />
+	<icon name="dot_blue" file="graphics/icons/dot_blue.png" />
 	
-	<!-- Campaign lists -->
+	<!-- Color Selection -->
+	<icon name="colorgizmo_bigbtn_base" file="graphics/icons/colorgizmo_bigbtn_base.png" />
+	<icon name="colorgizmo_bigbtn_color" file="graphics/icons/colorgizmo_bigbtn_color.png" />
+	<icon name="colorgizmo_bigbtn_effects" file="graphics/icons/colorgizmo_bigbtn_effects.png" />
+	<icon name="colorgizmo_bigbtn_text" file="graphics/icons/colorgizmo_bigbtn_text.png" />
+
+	<!-- Assets -->
+	<icon name="asset_preview" file="graphics/icons/asset_preview.png" />
+	<icon name="button_asset_prev" file="graphics/icons/asset_arrow_left.png" />
+	<icon name="button_asset_next" file="graphics/icons/asset_arrow_right.png" />
+	
+	<!-- Campaign records -->
+	<icon name="record_public" file="graphics/icons/record_public.png" />
+	<icon name="record_shared" file="graphics/icons/record_shared.png" />
+	<icon name="record_readonly" file="graphics/icons/record_readonly.png" />
+	<icon name="record_intact" file="graphics/icons/record_intact.png" />
+	<icon name="record_dirty" file="graphics/icons/record_dirty.png" />
+	
+	<!-- Tables -->
+	<icon name="button_add_table_guided" file="graphics/buttons/button_add_table_guided.png" />
+	<icon name="button_add_table_guided_down" file="graphics/buttons/button_add_table_guided_down.png" />
+	<icon name="button_col_insert" file="graphics/buttons/button_col_insert.png" />
+	<icon name="button_col_delete" file="graphics/buttons/button_col_delete.png" />
+
+	<!-- Images -->
+	<icon name="image_pin" file="graphics/icons/image_pin.png" />
+	<icon name="image_pin_public" file="graphics/icons/image_pin_public.png" />
+	<icon name="image_loading" file="graphics/icons/image_loading.png" />
+	<icon name="image_locked" file="graphics/icons/image_locked.png" />
+	<icon name="button_scrollerpan" file="graphics/buttons/button_scrollerpan.png" />
+	<icon name="button_scrollerpan_down" file="graphics/buttons/button_scrollerpan_down.png" />
+	<icon name="button_zoomer" file="graphics/buttons/button_zoomer.png" />
+	<icon name="button_zoomer_down" file="graphics/buttons/button_zoomer_down.png" />
+	
+	<!-- Character Sheet -->
+	<icon name="char_encumbrance" file="graphics/icons/char_encumbrance.png" />
+	<icon name="char_inv_carried_header" file="graphics/icons/char_inv_carried_header.png" />
+	<icon name="button_char_inv_none" file="graphics/buttons/button_inv_none.png" />
+	<icon name="button_char_inv_carried" file="graphics/buttons/button_inv_carried.png" />
+	<icon name="button_char_inv_equipped" file="graphics/buttons/button_inv_equipped.png" />
 	
 	<!-- Minimized -->	
+	<icon name="minimized_glow" file="graphics/icons/minimized_glow.png" />
+	<icon name="minimized_image" file="graphics/icons/minimized_image.png" />
+	<icon name="minimized_encounter" file="graphics/icons/minimized_encounter.png" />
+	<icon name="minimized_item" file="graphics/icons/minimized_item.png" />
+	<icon name="minimized_npc" file="graphics/icons/minimized_npc.png" />
+	<icon name="minimized_utility" file="graphics/icons/minimized_utility.png" />
+	<icon name="minimized_reference" file="graphics/icons/minimized_reference.png" />
+	<icon name="minimized_note" file="graphics/icons/minimized_note.png" />
+	<icon name="minimized_combat" file="graphics/icons/minimized_combat.png" />
 
 	<!-- Combat tracker -->
-	<icon name="button_rolls" file="graphics/buttons/button_rolls.png" />
-	<icon name="button_rolls_down" file="graphics/buttons/button_rolls_down.png" />
-	<icon name="radial_noturn" file="graphics/radial/icon_noturn.png" />
-	<icon name="button_clearturns" file="graphics/buttons/button_clearturns.png" />
-	<icon name="button_clearturns_down" file="graphics/buttons/button_clearturns_down.png" />
-	<icon name="button_zeroinit" file="graphics/buttons/button_zeroinit.png" />
-	<icon name="button_zeroinit_down" file="graphics/buttons/button_zeroinit_down.png" />
-	<icon name="button_rerollinit" file="graphics/buttons/button_rerollinit.png" />
-	<icon name="button_rerollinit_down" file="graphics/buttons/button_rerollinit_down.png" />
+	<icon name="turn_flag" file="graphics/icons/turn_flag.png" />
+	<icon name="ct_active" file="graphics/icons/ct_active.png" />
+	<icon name="ct_passive" file="graphics/icons/ct_passive.png" />
+	<icon name="ct_faction_empty" file="graphics/icons/ct_faction_empty.png" />
+	<icon name="ct_faction_friend" file="graphics/icons/ct_faction_friend.png" />
+	<icon name="ct_faction_neutral" file="graphics/icons/ct_faction_neutral.png" />
+	<icon name="ct_faction_foe" file="graphics/icons/ct_faction_foe.png" />
+	<icon name="ct_space" file="graphics/icons/ct_space.png" />
+	<icon name="ct_reach" file="graphics/icons/ct_reach.png" />
+	<icon name="button_sword" file="graphics/buttons/button_sword.png" />
+	<icon name="button_sword_down" file="graphics/buttons/button_sword_down.png" />
+	<icon name="button_shield" file="graphics/buttons/button_shield.png" />
+	<icon name="button_shield_down" file="graphics/buttons/button_shield_down.png" />
+	<icon name="button_space" file="graphics/buttons/button_space.png" />
+	<icon name="button_space_down" file="graphics/buttons/button_space_down.png" />
+	<icon name="button_effect" file="graphics/buttons/button_effect.png" />
+	<icon name="button_effect_down" file="graphics/buttons/button_effect_down.png" />
+	<icon name="button_section_targeting" file="graphics/buttons/button_section_targeting.png" />
+	<icon name="button_section_targeting_down" file="graphics/buttons/button_section_targeting_down.png" />
+	<icon name="button_targeting" file="graphics/buttons/button_targeting.png" />
+	<icon name="button_targeting_down" file="graphics/buttons/button_targeting_down.png" />
+	<icon name="button_quicklist" file="graphics/buttons/button_quicklist.png" />
+	<icon name="button_quicklist_down" file="graphics/buttons/button_quicklist_down.png" />
+	<icon name="drag_targeting" file="graphics/icons/drag_targeting.png" />
+	<icon name="icon_targeting_off" file="graphics/icons/icon_targeting_off.png" />
+	<icon name="button_menu" file="graphics/buttons/button_menu.png" />
+	<icon name="button_menu_down" file="graphics/buttons/button_menu_down.png" />
+	<icon name="button_ctnextround" file="graphics/buttons/button_ctnextround.png" />
+	<icon name="button_ctnextround_down" file="graphics/buttons/button_ctnextround_down.png" />
+	<icon name="button_ctnextactor" file="graphics/buttons/button_ctnextactor.png" />
+	<icon name="button_ctnextactor_down" file="graphics/buttons/button_ctnextactor_down.png" />
 
-	<!-- Titles -->
-	<icon name="title_cas" file="graphics/tabs/title_cas.png" />
-	<icon name="title_story" file="graphics/tabs/title_story.png" />
-	<icon name="title_quests" file="graphics/tabs/title_quests.png" />
-	<icon name="title_encounters" file="graphics/tabs/title_encounters.png" />
-	<icon name="title_images" file="graphics/tabs/title_images.png" />
-	<icon name="title_items" file="graphics/tabs/title_items.png" />
-	<icon name="title_notes" file="graphics/tabs/title_notes.png" />
-	<icon name="title_npcs" file="graphics/tabs/title_npcs.png" />
-	<icon name="title_parcels" file="graphics/tabs/title_parcels.png" />
+	<!-- Buttons -->
+	<icon name="button_toggle_visible" file="graphics/buttons/button_toggle_visible.png" />
+	<icon name="button_toggle_gm" file="graphics/buttons/button_toggle_gm.png" />
+	<icon name="button_toggle_on" file="graphics/buttons/button_toggle_on.png" />
+	<icon name="button_toggle_off" file="graphics/buttons/button_toggle_off.png" />
+	<icon name="button_toggle_skip" file="graphics/buttons/button_toggle_skip.png" />
+	<icon name="button_toggle_all" file="graphics/buttons/button_toggle_all.png" />
+	<icon name="button_toggle_action" file="graphics/buttons/button_toggle_action.png" />
+	<icon name="button_toggle_roll" file="graphics/buttons/button_toggle_roll.png" />
+	<icon name="button_toggle_single" file="graphics/buttons/button_toggle_single.png" />
+	<icon name="button_toggle_trgt" file="graphics/buttons/button_toggle_trgt.png" />
+	<icon name="button_toggle_self" file="graphics/buttons/button_toggle_self.png" />
 
-	<!-- Dicepool -->
-	<icon name="dicepool" file="graphics/icons/dicepool.png" />
+	<!-- Tokens - Effects - General -->
+	<icon name="cond_more" file="graphics/token/token_cond_more.png" />
+	<icon name="cond_generic" file="graphics/token/token_cond_generic.png" />
+	<icon name="cond_bonus" file="graphics/token/token_cond_bonus.png" />
+	<icon name="cond_penalty" file="graphics/token/token_cond_penalty.png" />
 
-	<!-- Trackers Icons -->
-	<icon name="icon_ankh" file="graphics/icons/icon_ankh.png" />
-	<icon name="icon_academic" file="graphics/icons/icon_academic.png" />
-	<icon name="icon_camp" file="graphics/icons/icon_camp.png" />
-	<icon name="icon_cauldron" file="graphics/icons/icon_cauldron.png" />
-	<icon name="icon_clue" file="graphics/icons/icon_clue.png" />
-	<icon name="icon_crystalball" file="graphics/icons/icon_crystalball.png" />
-	<icon name="icon_dragon" file="graphics/icons/icon_dragon.png" />
-	<icon name="icon_heart" file="graphics/icons/icon_heart.png" />
-	<icon name="icon_helmet1" file="graphics/icons/icon_helmet1.png" />
-	<icon name="icon_helmet2" file="graphics/icons/icon_helmet2.png" />
-	<icon name="icon_interpersonal" file="graphics/icons/icon_interpersonal.png" />
-	<icon name="icon_luck" file="graphics/icons/icon_luck.png" />
-	<icon name="icon_magic" file="graphics/icons/icon_magic.png" />
-	<icon name="icon_potion" file="graphics/icons/icon_potion.png" />
-	<icon name="icon_rune3" file="graphics/icons/icon_rune3.png" />
-	<icon name="icon_rune4" file="graphics/icons/icon_rune4.png" />
-	<icon name="icon_sabres" file="graphics/icons/icon_sabres.png" />
-	<icon name="icon_sanity" file="graphics/icons/icon_sanity.png" />
-	<icon name="icon_shield" file="graphics/icons/icon_shield.png" />
-	<icon name="icon_spellbook" file="graphics/icons/icon_spellbook.png" />
-	<icon name="icon_sword" file="graphics/icons/icon_sword.png" />
-	<icon name="icon_swords" file="graphics/icons/icon_swords.png" />
-	<icon name="icon_tools" file="graphics/icons/icon_tools.png" />
-	<icon name="icon_unicorn" file="graphics/icons/icon_unicorn.png" />
-	<icon name="icon_wizard" file="graphics/icons/icon_wizard.png" />
-
-	<icon name="icon_toc_sanity" file="graphics/icons/icon_toc_sanity.png" />
+	<!-- Tokens - Effects - Conditions -->
+	<icon name="cond_blinded" file="graphics/token/token_cond_blinded.png" />
+	<icon name="cond_charmed" file="graphics/token/token_cond_charmed.png" />
+	<icon name="cond_confused" file="graphics/token/token_cond_confused.png" />
+	<icon name="cond_dazed" file="graphics/token/token_cond_dazed.png" />
+	<icon name="cond_deafened" file="graphics/token/token_cond_deafened.png" />
+	<icon name="cond_encumbered" file="graphics/token/token_cond_encumbered.png" />
+	<icon name="cond_frightened" file="graphics/token/token_cond_frightened.png" />
+	<icon name="cond_grappled" file="graphics/token/token_cond_grappled.png" />
+	<icon name="cond_helpless" file="graphics/token/token_cond_helpless.png" />
+	<icon name="cond_incorporeal" file="graphics/token/token_cond_incorporeal.png" />
+	<icon name="cond_invisible" file="graphics/token/token_cond_invisible.png" />
+	<icon name="cond_paralyzed" file="graphics/token/token_cond_paralyzed.png" />
+	<icon name="cond_pinned" file="graphics/token/token_cond_pinned.png" />
+	<icon name="cond_prone" file="graphics/token/token_cond_prone.png" />
+	<icon name="cond_restrained" file="graphics/token/token_cond_restrained.png" />
+	<icon name="cond_sickened" file="graphics/token/token_cond_sickened.png" />
+	<icon name="cond_slowed" file="graphics/token/token_cond_slowed.png" />
+	<icon name="cond_stunned" file="graphics/token/token_cond_stunned.png" />
+	<icon name="cond_surprised" file="graphics/token/token_cond_surprised.png" />
+	<icon name="cond_turned" file="graphics/token/token_cond_turned.png" />
+	<icon name="cond_unconscious" file="graphics/token/token_cond_unconscious.png" />
+	<icon name="cond_weakened" file="graphics/token/token_cond_weakened.png" />
 	
-	<icon name="donate" file="graphics/icons/donate.png" />
-	<icon name="handshake" file="graphics/icons/handshake.png" />
+	<!-- Tokens - Effects - Common -->
+	<icon name="cond_advantage" file="graphics/token/token_cond_advantage.png" />
+	<icon name="cond_bleed" file="graphics/token/token_cond_bleed.png" />
+	<icon name="cond_cover" file="graphics/token/token_cond_cover.png" />
+	<icon name="cond_conceal" file="graphics/token/token_cond_conceal.png" />
+	<icon name="cond_disadvantage" file="graphics/token/token_cond_disadvantage.png" />
+	<icon name="cond_immune" file="graphics/token/token_cond_immune.png" />
+	<icon name="cond_regeneration" file="graphics/token/token_cond_regen.png" />
+	<icon name="cond_resistance" file="graphics/token/token_cond_resist.png" />
+	<icon name="cond_vulnerable" file="graphics/token/token_cond_vuln.png" />
 
-	<icon name="noon" file="graphics/icons/chat_noon.png" />
-	<icon name="Noon" file="graphics/icons/chat_noon.png" />
-	<icon name="sunrise" file="graphics/icons/chat_sunrise.png" />
-	<icon name="Sunrise" file="graphics/icons/chat_sunrise.png" />
-	<icon name="night" file="graphics/icons/chat_night.png" />
-	<icon name="Night" file="graphics/icons/chat_night.png" />
-	<icon name="sunset" file="graphics/icons/chat_sunset.png" />
-	<icon name="Sunset" file="graphics/icons/chat_sunset.png" />
-	<icon name="combat" file="graphics/icons/chat_combat.png" />
-	<icon name="Combat" file="graphics/icons/chat_combat.png" />
-	<icon name="rest" file="graphics/icons/chat_rest.png" />
-	<icon name="Rest" file="graphics/icons/chat_rest.png" />
-	<icon name="treasure" file="graphics/icons/chat_treasure.png" />
-	<icon name="Treasure" file="graphics/icons/chat_treasure.png" />
-	<icon name="town" file="graphics/icons/chat_town.png" />
-	<icon name="Town" file="graphics/icons/chat_town.png" />
-	<icon name="dungeon" file="graphics/icons/chat_dungeon.png" />
-	<icon name="Dungeon" file="graphics/icons/chat_dungeon.png" />
-	<icon name="clue" file="graphics/icons/chat_clue.png" />
-	<icon name="Clue" file="graphics/icons/chat_clue.png" />
-	<icon name="planning" file="graphics/icons/chat_planning.png" />
-	<icon name="Planning" file="graphics/icons/chat_planning.png" />
-	<icon name="investigation" file="graphics/icons/chat_investigation.png" />
-	<icon name="Investigation" file="graphics/icons/chat_investigation.png" />
-	<icon name="action" file="graphics/icons/chat_action.png" />
-	<icon name="Action" file="graphics/icons/chat_action.png" />
-	<icon name="tomb" file="graphics/icons/chat_tomb.png" />
-	<icon name="Tomb" file="graphics/icons/chat_tomb.png" />
-	<icon name="sanity" file="graphics/icons/chat_sanity.png" />
-	<icon name="Sanity" file="graphics/icons/chat_sanity.png" />
-	<icon name="exploit" file="graphics/icons/chat_exploit.png" />
-	<icon name="Exploit" file="graphics/icons/chat_exploit.png" />
-	<icon name="Safety" file="graphics/icons/chat_safety.png" />
-	<icon name="Safety" file="graphics/icons/chat_safety.png" />
-	<icon name="LevelUp" file="graphics/icons/chat_levelup.png" />
-	<icon name="levelup" file="graphics/icons/chat_levelup.png" />
-	<icon name="Camp" file="graphics/icons/chat_camp.png" />
-	<icon name="camp" file="graphics/icons/chat_camp.png" />
-	<icon name="Tension1" file="graphics/icons/chat_tension1.png" />
-	<icon name="tension1" file="graphics/icons/chat_tension1.png" />
-	<icon name="Tension2" file="graphics/icons/chat_tension2.png" />
-	<icon name="tension2" file="graphics/icons/chat_tension2.png" />
-	<icon name="Tension3" file="graphics/icons/chat_tension3.png" />
-	<icon name="tension3" file="graphics/icons/chat_tension3.png" />
-	<icon name="Tension4" file="graphics/icons/chat_tension4.png" />
-	<icon name="tension4" file="graphics/icons/chat_tension4.png" />
-	<icon name="Tension5" file="graphics/icons/chat_tension5.png" />
-	<icon name="tension5" file="graphics/icons/chat_tension5.png" />
-	<icon name="Tension6" file="graphics/icons/chat_tension6.png" />
-	<icon name="tension6" file="graphics/icons/chat_tension6.png" />
+	<!-- Tokens - Health -->
+	<icon name="healthbar" file="graphics/token/token_healthbar.png" />
+	<icon name="healthdot" file="graphics/token/token_healthdot.png" />
 	
+	<!-- Misc -->
+	<icon name="error" file="graphics/icons/error.png" />
+	<icon name="search" file="graphics/icons/search.png" />
+	<icon name="button_speak" file="graphics/buttons/button_speak.png" />
+	<icon name="button_speak_down" file="graphics/buttons/button_speak_down.png" />
+	<icon name="arrowleft" file="graphics/icons/arrow_left.png" />
+	<icon name="arrowright" file="graphics/icons/arrow_right.png" />
+	<icon name="arrow_sm_left" file="graphics/icons/arrow_sm_left.png" />
+	<icon name="arrow_sm_right" file="graphics/icons/arrow_sm_right.png" />
+	<icon name="arrow_sm_down" file="graphics/icons/arrow_sm_down.png" />
+	<icon name="arrow_sm_up" file="graphics/icons/arrow_sm_up.png" />
+	<icon name="button_roll" file="graphics/buttons/button_roll.png" />
+	<icon name="button_roll_down" file="graphics/buttons/button_roll_down.png" />
+	<icon name="visibilityon" file="graphics/icons/visibilityon.png" />
+	<icon name="visibilityoff" file="graphics/icons/visibilityoff.png" />
+	<icon name="field_rollable" file="graphics/icons/field_rollable.png" />
+	<icon name="field_rollable_transparent" file="graphics/icons/field_rollable_transparent.png" />
+	<icon name="field_linked" file="graphics/icons/field_linked.png" />
+	<icon name="padlock_open" file="graphics/icons/padlock_open.png" />
+	<icon name="padlock_closed" file="graphics/icons/padlock_closed.png" />
+	<icon name="record_identified" file="graphics/icons/record_identified.png" />
+	<icon name="record_unidentified" file="graphics/icons/record_unidentified.png" />
+	<icon name="toolbar_on" file="graphics/icons/toolbar_on.png" />
+	<icon name="toolbar_off" file="graphics/icons/toolbar_off.png" />
+	<icon name="refresh" file="graphics/icons/refresh.png" />
 </root>

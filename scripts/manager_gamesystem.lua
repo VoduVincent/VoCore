@@ -8,16 +8,16 @@ actions = {
 	["dice"] = { bUseModStack = "true" },
 	["table"] = { },
 	["effect"] = { sIcon = "action_effect", sTargeting = "all" },
-	["attack"] =  { bUseModStack = "true", sTargeting = "all" }
 };
 
 targetactions = {
 	"effect",
-  "attack",
 };
 
-languages = {
-};
+languages = { };
+
+currencies = { };
+currencyDefault = nil;
 
 function getCharSelectDetailHost(nodeChar)
 	return "";
